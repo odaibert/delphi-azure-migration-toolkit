@@ -4,7 +4,7 @@ This repository contains all the necessary files and step-by-step instructions t
 
 > 📖 **Official Documentation**: For comprehensive Azure App Service guidance, see the [Azure App Service Documentation](https://docs.microsoft.com/azure/app-service/) and [ISAPI Extension and Filter support](https://docs.microsoft.com/azure/app-service/configure-language-dotnetframework#isapi-extensions-and-filters).
 
-> ⚠️ **Important**: Before migrating, review the [Azure Web App Sandbox Restrictions](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#general-sandbox-restrictions) to understand platform limitations that may affect your ISAPI filter.
+> ⚠️ **Important**: Before migrating, review the [Azure Web App Sandbox Restrictions](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#general-sandbox-restrictions) to understand platform limitations. See our comprehensive [Azure Sandbox Checklist](docs/azure-sandbox-checklist.md) for detailed coverage of each restriction with official Microsoft documentation references.
 
 ## 📋 Prerequisites
 
@@ -30,7 +30,8 @@ This repository contains all the necessary files and step-by-step instructions t
 │   └── test-deployment.ps1
 └── docs/                   # Additional documentation
     ├── troubleshooting.md
-    └── migration-checklist.md
+    ├── migration-checklist.md
+    └── azure-sandbox-checklist.md
 ```
 
 ## 🚀 Step-by-Step Migration Guide
