@@ -1,187 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <style>
-      .title { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; fill: #2c3e50; }
-      .subtitle { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; fill: #34495e; }
-      .text { font-family: Arial, sans-serif; font-size: 14px; fill: #2c3e50; }
-      .small-text { font-family: Arial, sans-serif; font-size: 12px; fill: #7f8c8d; }
-      .server-box { fill: #ecf0f1; stroke: #bdc3c7; stroke-width: 2; }
-      .azure-box { fill: #e3f2fd; stroke: #1976d2; stroke-width: 2; }
-      .component { fill: #f8f9fa; stroke: #6c757d; stroke-width: 1.5; }
-      .delphi-component { fill: #fff3cd; stroke: #856404; stroke-width: 1.5; }
-      .azure-component { fill: #d1ecf1; stroke: #0c5460; stroke-width: 1.5; }
-      .user { fill: #28a745; stroke: #155724; stroke-width: 2; }
-      .arrow { stroke: #495057; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
-      .migration-arrow { stroke: #dc3545; stroke-width: 3; fill: none; marker-end: url(#redarrowhead); }
-    </style>
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#495057" />
-    </marker>
-    <marker id="redarrowhead" markerWidth="12" markerHeight="8" refX="11" refY="4" orient="auto">
-      <polygon points="0 0, 12 4, 0 8" fill="#dc3545" />
-    </marker>
-  </defs>
-
+<svg width="1000" height="700" xmlns="http://www.w3.org/2000/svg">
   <!-- Title -->
-  <text x="600" y="30" text-anchor="middle" class="title">Delphi ISAPI Migration: Before vs After</text>
+  <text x="500" y="30" text-anchor="middle" font-family="Arial" font-size="22" font-weight="bold" fill="#2c3e50">Delphi ISAPI Migration: Before vs After</text>
   
   <!-- BEFORE Section -->
-  <text x="300" y="70" text-anchor="middle" class="subtitle">BEFORE: Legacy On-Premises</text>
+  <text x="250" y="70" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#e74c3c">BEFORE: Legacy On-Premises</text>
   
-  <!-- Legacy Environment -->
-  <rect x="50" y="90" width="500" height="300" rx="10" class="server-box"/>
-  <text x="300" y="115" text-anchor="middle" class="text">Legacy Windows Server Environment</text>
+  <!-- Legacy Environment Box -->
+  <rect x="50" y="80" width="400" height="220" rx="10" fill="#ffebee" stroke="#e74c3c" stroke-width="2"/>
   
-  <!-- User -->
-  <circle cx="100" cy="180" r="25" class="user"/>
-  <text x="100" y="185" text-anchor="middle" class="text" fill="white">User</text>
+  <!-- Legacy Components -->
+  <rect x="80" y="100" width="120" height="60" rx="5" fill="#ffffff" stroke="#666666" stroke-width="1"/>
+  <text x="140" y="125" text-anchor="middle" font-family="Arial" font-size="12" fill="#2c3e50">Windows Server</text>
+  <text x="140" y="140" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Manual Setup</text>
+  <text x="140" y="155" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Hardware Dependent</text>
   
-  <!-- IIS Server -->
-  <rect x="180" y="140" width="150" height="100" rx="5" class="component"/>
-  <text x="255" y="165" text-anchor="middle" class="text">IIS Web Server</text>
-  <text x="255" y="185" text-anchor="middle" class="small-text">Windows Server</text>
-  <text x="255" y="200" text-anchor="middle" class="small-text">Local Installation</text>
-  <text x="255" y="220" text-anchor="middle" class="small-text">Manual Management</text>
+  <rect x="220" y="100" width="120" height="60" rx="5" fill="#fff3cd" stroke="#856404" stroke-width="1"/>
+  <text x="280" y="125" text-anchor="middle" font-family="Arial" font-size="12" fill="#2c3e50">IIS + ISAPI</text>
+  <text x="280" y="140" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Delphi DLL</text>
+  <text x="280" y="155" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Legacy Code</text>
   
-  <!-- ISAPI DLL -->
-  <rect x="380" y="140" width="120" height="100" rx="5" class="delphi-component"/>
-  <text x="440" y="165" text-anchor="middle" class="text">ISAPI Filter</text>
-  <text x="440" y="185" text-anchor="middle" class="small-text">Delphi DLL</text>
-  <text x="440" y="200" text-anchor="middle" class="small-text">Legacy Code</text>
-  <text x="440" y="220" text-anchor="middle" class="small-text">Local Resources</text>
+  <rect x="80" y="180" width="120" height="60" rx="5" fill="#ffffff" stroke="#666666" stroke-width="1"/>
+  <text x="140" y="205" text-anchor="middle" font-family="Arial" font-size="12" fill="#2c3e50">SQL Server</text>
+  <text x="140" y="220" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Local Database</text>
+  <text x="140" y="235" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Manual Backup</text>
   
-  <!-- Database -->
-  <rect x="200" y="280" width="120" height="80" rx="5" class="component"/>
-  <text x="260" y="305" text-anchor="middle" class="text">Database</text>
-  <text x="260" y="325" text-anchor="middle" class="small-text">SQL Server</text>
-  <text x="260" y="340" text-anchor="middle" class="small-text">Local Instance</text>
-  
-  <!-- File Storage -->
-  <rect x="360" y="280" width="120" height="80" rx="5" class="component"/>
-  <text x="420" y="305" text-anchor="middle" class="text">File Storage</text>
-  <text x="420" y="325" text-anchor="middle" class="small-text">Local Drives</text>
-  <text x="420" y="340" text-anchor="middle" class="small-text">Registry Access</text>
-  
-  <!-- Legacy Issues -->
-  <text x="300" y="415" text-anchor="middle" class="subtitle" fill="#dc3545">❌ Legacy Challenges</text>
-  <text x="80" y="440" class="small-text" fill="#dc3545">• Manual server management</text>
-  <text x="80" y="455" class="small-text" fill="#dc3545">• Limited scalability</text>
-  <text x="80" y="470" class="small-text" fill="#dc3545">• Hardware dependencies</text>
-  <text x="280" y="440" class="small-text" fill="#dc3545">• Security vulnerabilities</text>
-  <text x="280" y="455" class="small-text" fill="#dc3545">• Backup/disaster recovery</text>
-  <text x="280" y="470" class="small-text" fill="#dc3545">• Maintenance overhead</text>
+  <rect x="220" y="180" width="120" height="60" rx="5" fill="#ffffff" stroke="#666666" stroke-width="1"/>
+  <text x="280" y="205" text-anchor="middle" font-family="Arial" font-size="12" fill="#2c3e50">File System</text>
+  <text x="280" y="220" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Registry Access</text>
+  <text x="280" y="235" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Full Permissions</text>
   
   <!-- Migration Arrow -->
-  <path d="M 570 240 Q 600 200 630 240" class="migration-arrow"/>
-  <text x="600" y="210" text-anchor="middle" class="text" fill="#dc3545">MIGRATE</text>
+  <path d="M 470 190 L 530 190" stroke="#dc3545" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <text x="500" y="180" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#dc3545">MIGRATE</text>
   
   <!-- AFTER Section -->
-  <text x="900" y="70" text-anchor="middle" class="subtitle">AFTER: Azure App Service</text>
+  <text x="750" y="70" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#2196f3">AFTER: Azure App Service</text>
   
-  <!-- Azure Environment -->
-  <rect x="650" y="90" width="500" height="300" rx="10" class="azure-box"/>
-  <text x="900" y="115" text-anchor="middle" class="text">Microsoft Azure Cloud</text>
+  <!-- Azure Environment Box -->
+  <rect x="550" y="80" width="400" height="220" rx="10" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
   
-  <!-- User -->
-  <circle cx="700" cy="180" r="25" class="user"/>
-  <text x="700" y="185" text-anchor="middle" class="text" fill="white">User</text>
+  <!-- Azure Components -->
+  <rect x="580" y="100" width="120" height="60" rx="5" fill="#ffffff" stroke="#666666" stroke-width="1"/>
+  <text x="640" y="125" text-anchor="middle" font-family="Arial" font-size="12" fill="#2c3e50">Azure App Service</text>
+  <text x="640" y="140" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Managed Platform</text>
+  <text x="640" y="155" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Auto-scaling</text>
   
-  <!-- Azure App Service -->
-  <rect x="780" y="140" width="150" height="100" rx="5" class="azure-component"/>
-  <text x="855" y="165" text-anchor="middle" class="text">Azure App Service</text>
-  <text x="855" y="185" text-anchor="middle" class="small-text">Managed Platform</text>
-  <text x="855" y="200" text-anchor="middle" class="small-text">Auto-scaling</text>
-  <text x="855" y="220" text-anchor="middle" class="small-text">Built-in Security</text>
+  <rect x="720" y="100" width="120" height="60" rx="5" fill="#d1ecf1" stroke="#0c5460" stroke-width="1"/>
+  <text x="780" y="125" text-anchor="middle" font-family="Arial" font-size="12" fill="#2c3e50">ISAPI Filter</text>
+  <text x="780" y="140" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Migrated DLL</text>
+  <text x="780" y="155" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Sandbox Compatible</text>
   
-  <!-- Migrated ISAPI -->
-  <rect x="980" y="140" width="120" height="100" rx="5" class="azure-component"/>
-  <text x="1040" y="165" text-anchor="middle" class="text">ISAPI Filter</text>
-  <text x="1040" y="185" text-anchor="middle" class="small-text">Delphi DLL</text>
-  <text x="1040" y="200" text-anchor="middle" class="small-text">Cloud-optimized</text>
-  <text x="1040" y="220" text-anchor="middle" class="small-text">Sandbox-compliant</text>
+  <rect x="580" y="180" width="120" height="60" rx="5" fill="#ffffff" stroke="#666666" stroke-width="1"/>
+  <text x="640" y="205" text-anchor="middle" font-family="Arial" font-size="12" fill="#2c3e50">Azure SQL</text>
+  <text x="640" y="220" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Managed Database</text>
+  <text x="640" y="235" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Auto-backup</text>
   
-  <!-- Azure SQL -->
-  <rect x="780" y="280" width="120" height="80" rx="5" class="azure-component"/>
-  <text x="840" y="305" text-anchor="middle" class="text">Azure SQL</text>
-  <text x="840" y="325" text-anchor="middle" class="small-text">Managed Database</text>
-  <text x="840" y="340" text-anchor="middle" class="small-text">Auto-backup</text>
+  <rect x="720" y="180" width="120" height="60" rx="5" fill="#ffffff" stroke="#666666" stroke-width="1"/>
+  <text x="780" y="205" text-anchor="middle" font-family="Arial" font-size="12" fill="#2c3e50">Azure Storage</text>
+  <text x="780" y="220" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Blob Storage</text>
+  <text x="780" y="235" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">App Settings</text>
   
-  <!-- Azure Storage -->
-  <rect x="940" y="280" width="120" height="80" rx="5" class="azure-component"/>
-  <text x="1000" y="305" text-anchor="middle" class="text">Azure Storage</text>
-  <text x="1000" y="325" text-anchor="middle" class="small-text">Blob Storage</text>
-  <text x="1000" y="340" text-anchor="middle" class="small-text">App Settings</text>
+  <!-- Challenges vs Benefits -->
+  <text x="250" y="340" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#e74c3c">Legacy Challenges</text>
+  <text x="70" y="365" font-family="Arial" font-size="11" fill="#e74c3c">❌ Manual server management</text>
+  <text x="70" y="380" font-family="Arial" font-size="11" fill="#e74c3c">❌ Limited scalability</text>
+  <text x="70" y="395" font-family="Arial" font-size="11" fill="#e74c3c">❌ Hardware dependencies</text>
+  <text x="70" y="410" font-family="Arial" font-size="11" fill="#e74c3c">❌ Security vulnerabilities</text>
+  <text x="70" y="425" font-family="Arial" font-size="11" fill="#e74c3c">❌ Maintenance overhead</text>
   
-  <!-- Azure Benefits -->
-  <text x="900" y="415" text-anchor="middle" class="subtitle" fill="#28a745">✅ Azure Benefits</text>
-  <text x="680" y="440" class="small-text" fill="#28a745">• Fully managed platform</text>
-  <text x="680" y="455" class="small-text" fill="#28a745">• Auto-scaling & load balancing</text>
-  <text x="680" y="470" class="small-text" fill="#28a745">• Built-in monitoring</text>
-  <text x="880" y="440" class="small-text" fill="#28a745">• Enterprise security</text>
-  <text x="880" y="455" class="small-text" fill="#28a745">• Automated backups</text>
-  <text x="880" y="470" class="small-text" fill="#28a745">• Global availability</text>
+  <text x="750" y="340" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#2196f3">Azure Benefits</text>
+  <text x="570" y="365" font-family="Arial" font-size="11" fill="#2196f3">✅ Fully managed platform</text>
+  <text x="570" y="380" font-family="Arial" font-size="11" fill="#2196f3">✅ Auto-scaling capability</text>
+  <text x="570" y="395" font-family="Arial" font-size="11" fill="#2196f3">✅ Built-in security</text>
+  <text x="570" y="410" font-family="Arial" font-size="11" fill="#2196f3">✅ Global availability</text>
+  <text x="570" y="425" font-family="Arial" font-size="11" fill="#2196f3">✅ Automated backups</text>
   
-  <!-- Request Arrows BEFORE -->
-  <path d="M 125 180 L 180 180" class="arrow"/>
-  <path d="M 330 180 L 380 180" class="arrow"/>
-  <path d="M 255 240 L 255 280" class="arrow"/>
-  <path d="M 440 240 L 440 280" class="arrow"/>
+  <!-- Migration Toolkit -->
+  <rect x="50" y="460" width="900" height="180" rx="10" fill="#f8f9fa" stroke="#6c757d" stroke-width="1"/>
+  <text x="500" y="485" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#2c3e50">Migration Toolkit Components</text>
   
-  <!-- Request Arrows AFTER -->
-  <path d="M 725 180 L 780 180" class="arrow"/>
-  <path d="M 930 180 L 980 180" class="arrow"/>
-  <path d="M 855 240 L 855 280" class="arrow"/>
-  <path d="M 1040 240 L 1040 280" class="arrow"/>
+  <!-- Toolkit Components -->
+  <rect x="80" y="500" width="110" height="60" rx="5" fill="#d1ecf1" stroke="#0c5460" stroke-width="1"/>
+  <text x="135" y="520" text-anchor="middle" font-family="Arial" font-size="10" fill="#2c3e50">Bicep Templates</text>
+  <text x="135" y="535" text-anchor="middle" font-family="Arial" font-size="9" fill="#7f8c8d">Infrastructure</text>
+  <text x="135" y="550" text-anchor="middle" font-family="Arial" font-size="9" fill="#7f8c8d">as Code</text>
   
-  <!-- Additional Azure Services -->
-  <rect x="50" y="520" width="1100" height="200" rx="10" class="azure-box"/>
-  <text x="600" y="550" text-anchor="middle" class="subtitle">Azure Migration Toolkit Components</text>
+  <rect x="210" y="500" width="110" height="60" rx="5" fill="#d1ecf1" stroke="#0c5460" stroke-width="1"/>
+  <text x="265" y="520" text-anchor="middle" font-family="Arial" font-size="10" fill="#2c3e50">PowerShell</text>
+  <text x="265" y="535" text-anchor="middle" font-family="Arial" font-size="9" fill="#7f8c8d">Deployment</text>
+  <text x="265" y="550" text-anchor="middle" font-family="Arial" font-size="9" fill="#7f8c8d">Scripts</text>
   
-  <!-- Bicep Template -->
-  <rect x="80" y="570" width="140" height="80" rx="5" class="azure-component"/>
-  <text x="150" y="595" text-anchor="middle" class="text">Bicep Template</text>
-  <text x="150" y="615" text-anchor="middle" class="small-text">Infrastructure</text>
-  <text x="150" y="630" text-anchor="middle" class="small-text">as Code</text>
+  <rect x="340" y="500" width="110" height="60" rx="5" fill="#d1ecf1" stroke="#0c5460" stroke-width="1"/>
+  <text x="395" y="520" text-anchor="middle" font-family="Arial" font-size="10" fill="#2c3e50">Configuration</text>
+  <text x="395" y="535" text-anchor="middle" font-family="Arial" font-size="9" fill="#7f8c8d">web.config</text>
+  <text x="395" y="550" text-anchor="middle" font-family="Arial" font-size="9" fill="#7f8c8d">ISAPI Settings</text>
   
-  <!-- PowerShell Scripts -->
-  <rect x="240" y="570" width="140" height="80" rx="5" class="azure-component"/>
-  <text x="310" y="595" text-anchor="middle" class="text">PowerShell</text>
-  <text x="310" y="615" text-anchor="middle" class="small-text">Deployment</text>
-  <text x="310" y="630" text-anchor="middle" class="small-text">Scripts</text>
+  <rect x="470" y="500" width="110" height="60" rx="5" fill="#d1ecf1" stroke="#0c5460" stroke-width="1"/>
+  <text x="525" y="520" text-anchor="middle" font-family="Arial" font-size="10" fill="#2c3e50">Documentation</text>
+  <text x="525" y="535" text-anchor="middle" font-family="Arial" font-size="9" fill="#7f8c8d">Step-by-step</text>
+  <text x="525" y="550" text-anchor="middle" font-family="Arial" font-size="9" fill="#7f8c8d">Migration Guide</text>
   
-  <!-- Configuration -->
-  <rect x="400" y="570" width="140" height="80" rx="5" class="azure-component"/>
-  <text x="470" y="595" text-anchor="middle" class="text">Configuration</text>
-  <text x="470" y="615" text-anchor="middle" class="small-text">web.config</text>
-  <text x="470" y="630" text-anchor="middle" class="small-text">ISAPI Settings</text>
+  <rect x="600" y="500" width="110" height="60" rx="5" fill="#d1ecf1" stroke="#0c5460" stroke-width="1"/>
+  <text x="655" y="520" text-anchor="middle" font-family="Arial" font-size="10" fill="#2c3e50">Sandbox</text>
+  <text x="655" y="535" text-anchor="middle" font-family="Arial" font-size="9" fill="#7f8c8d">Compliance</text>
+  <text x="655" y="550" text-anchor="middle" font-family="Arial" font-size="9" fill="#7f8c8d">Checklist</text>
   
-  <!-- Monitoring -->
-  <rect x="560" y="570" width="140" height="80" rx="5" class="azure-component"/>
-  <text x="630" y="595" text-anchor="middle" class="text">App Insights</text>
-  <text x="630" y="615" text-anchor="middle" class="small-text">Monitoring</text>
-  <text x="630" y="630" text-anchor="middle" class="small-text">& Logging</text>
+  <rect x="730" y="500" width="110" height="60" rx="5" fill="#d1ecf1" stroke="#0c5460" stroke-width="1"/>
+  <text x="785" y="520" text-anchor="middle" font-family="Arial" font-size="10" fill="#2c3e50">Testing Tools</text>
+  <text x="785" y="535" text-anchor="middle" font-family="Arial" font-size="9" fill="#7f8c8d">Validation</text>
+  <text x="785" y="550" text-anchor="middle" font-family="Arial" font-size="9" fill="#7f8c8d">Scripts</text>
   
-  <!-- Documentation -->
-  <rect x="720" y="570" width="140" height="80" rx="5" class="azure-component"/>
-  <text x="790" y="595" text-anchor="middle" class="text">Documentation</text>
-  <text x="790" y="615" text-anchor="middle" class="small-text">Migration Guide</text>
-  <text x="790" y="630" text-anchor="middle" class="small-text">Troubleshooting</text>
+  <!-- Repository Info -->
+  <text x="500" y="590" text-anchor="middle" font-family="Arial" font-size="12" fill="#2c3e50">Complete migration toolkit from legacy Delphi ISAPI to modern Azure App Service</text>
+  <text x="500" y="610" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Repository: https://github.com/odaibert/delphi-azure-migration-toolkit</text>
   
-  <!-- Sandbox Checklist -->
-  <rect x="880" y="570" width="140" height="80" rx="5" class="azure-component"/>
-  <text x="950" y="595" text-anchor="middle" class="text">Sandbox</text>
-  <text x="950" y="615" text-anchor="middle" class="small-text">Compliance</text>
-  <text x="950" y="630" text-anchor="middle" class="small-text">Checklist</text>
-  
-  <!-- Testing -->
-  <rect x="1040" y="570" width="140" height="80" rx="5" class="azure-component"/>
-  <text x="1110" y="595" text-anchor="middle" class="text">Testing</text>
-  <text x="1110" y="615" text-anchor="middle" class="small-text">Validation</text>
-  <text x="1110" y="630" text-anchor="middle" class="small-text">Scripts</text>
-  
-  <!-- Migration Path -->
-  <text x="600" y="690" text-anchor="middle" class="text">This toolkit provides everything needed for a complete migration from legacy Delphi ISAPI to modern Azure App Service</text>
-  <text x="600" y="710" text-anchor="middle" class="small-text">Including infrastructure templates, deployment automation, configuration, monitoring, and comprehensive documentation</text>
-  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <polygon points="0,0 0,6 9,3" fill="#dc3545"/>
+    </marker>
+  </defs>
 </svg>
