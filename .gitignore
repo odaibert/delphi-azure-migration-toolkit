@@ -1,0 +1,44 @@
+# Azure deployment outputs
+*.zip
+*.log
+
+# PowerShell temporary files
+*.tmp
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Azure credentials and secrets
+*.publishsettings
+*.azurepubxml
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# Temporary deployment files
+temp/
+tmp/
+
+# User-specific ISAPI DLL (users should add their own)
+deployment/YourISAPIFilter.dll
+
+# Bicep compilation outputs
+*.json
+!infrastructure/bicep/parameters.json
+
+# PowerShell execution logs
+execution-*.log
