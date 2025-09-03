@@ -6,6 +6,27 @@ This repository contains all the necessary files and step-by-step instructions t
 
 > ⚠️ **Important**: Before migrating, review the [Azure Web App Sandbox Restrictions](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#general-sandbox-restrictions) to understand platform limitations. See our comprehensive [Azure Sandbox Checklist](docs/azure-sandbox-checklist.md) for detailed coverage of each restriction with official Microsoft documentation references.
 
+## 🎯 Choose Your Learning Path
+
+Select the approach that best fits your experience level and time constraints:
+
+### 🚀 **Quick Start (30 minutes)**
+Perfect for experienced developers who want to get up and running fast.
+- **[Quick Start Guide](guides/quick-start/README.md)**
+- Streamlined steps with minimal explanation
+- Assumes familiarity with Azure and PowerShell
+- Get your ISAPI filter running in Azure quickly
+
+### 📚 **Detailed Academic Guide (2-3 hours)**
+Comprehensive, professor-led approach with deep explanations.
+- **[Detailed Step-by-Step Guide](guides/detailed/README.md)**
+- In-depth explanations of each concept
+- Troubleshooting scenarios and best practices
+- Perfect for learning Azure App Service thoroughly
+- Modular approach with focused lessons
+
+---
+
 ## 📋 Prerequisites
 
 - Azure subscription
@@ -16,7 +37,13 @@ This repository contains all the necessary files and step-by-step instructions t
 ## 🏗️ Repository Structure
 
 ```
-├── README.md                 # This file - complete migration guide
+├── README.md                 # This file - migration overview
+├── guides/                   # Step-by-step guides
+│   ├── quick-start/          # Fast-track deployment (30 min)
+│   │   └── README.md         # Streamlined migration steps
+│   └── detailed/             # Academic detailed guide (2-3 hours)
+│       ├── README.md         # Comprehensive learning path
+│       └── modules/          # Individual learning modules
 ├── infrastructure/           # Azure infrastructure files
 │   └── bicep/               # ARM/Bicep templates
 │       ├── main.bicep       # Main infrastructure template
@@ -48,28 +75,17 @@ The migration transforms your legacy on-premises Delphi ISAPI infrastructure int
 - **From**: Manual Windows Server + IIS + Local SQL Server + File System Access
 - **To**: Azure App Service + Azure SQL Database + Azure Storage + Managed Services
 
-## 🚀 Step-by-Step Migration Guide
+## 🎓 Learning Resources
 
-### Step 1: Prepare Your Environment
+### Documentation & References
+- **[Troubleshooting Guide](docs/troubleshooting.md)** - Common issues and solutions
+- **[Migration Checklist](docs/migration-checklist.md)** - Complete migration verification
+- **[Azure Sandbox Checklist](docs/azure-sandbox-checklist.md)** - Sandbox compatibility guide
 
-1. **Install Azure CLI** (if not already installed):
-   ```powershell
-   winget install Microsoft.AzureCLI
-   ```
-
-2. **Login to Azure**:
-   ```powershell
-   az login
-   ```
-
-3. **Set your subscription**:
-   ```powershell
-   az account set --subscription "your-subscription-id"
-   ```
-
-### Step 2: Provision Azure Resources
-
-**Deploy the infrastructure using Azure Bicep:**
+### Community & Support
+- [GitHub Issues](https://github.com/odaibert/delphi-azure-migration-toolkit/issues) - Report bugs or ask questions
+- [Azure App Service Documentation](https://docs.microsoft.com/azure/app-service/) - Official Microsoft documentation
+- [Azure Community Forums](https://docs.microsoft.com/answers/topics/azure-app-service.html) - Community support
 
 1. **Deploy the infrastructure**:
    ```powershell
