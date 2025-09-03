@@ -14,6 +14,8 @@ param(
 
 # Setup script for Azure environment and infrastructure deployment
 Write-Host "🚀 Setting up Azure Environment for ISAPI Migration" -ForegroundColor Green
+Write-Host "📖 Documentation: https://docs.microsoft.com/azure/app-service/" -ForegroundColor Cyan
+Write-Host "⚠️  Review sandbox restrictions: https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox" -ForegroundColor Yellow
 
 # Check prerequisites
 Write-Host "🔍 Checking prerequisites..." -ForegroundColor Yellow

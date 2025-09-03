@@ -1,6 +1,8 @@
-# Migration Checklist - Delphi 6 ISAPI to Azure App Service
+# Migration Checklist - Delphi ISAPI to Azure App Service
 
-Use this checklist to ensure a successful migration of your legacy Delphi 6 ISAPI filter to Azure App Service.
+Use this checklist to ensure a successful migration of your legacy Delphi ISAPI filter to Azure App Service.
+
+> 📖 **Essential Reading**: Before starting, review [Azure Web App Sandbox Restrictions](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#general-sandbox-restrictions) and [Azure App Service Documentation](https://docs.microsoft.com/azure/app-service/).
 
 ## 📋 Pre-Migration Assessment
 
@@ -37,11 +39,13 @@ Use this checklist to ensure a successful migration of your legacy Delphi 6 ISAP
   - [ ] No dependencies on 32-bit only components
 
 - [ ] **Code Compatibility**
-  - [ ] No use of Windows Registry
+  - [ ] No use of Windows Registry (restricted in Azure App Service sandbox)
   - [ ] No hardcoded file paths (C:\, UNC paths)
   - [ ] No dependencies on Windows services
   - [ ] No use of COM+ or MSMQ
   - [ ] Thread-safe code implementation
+  - [ ] No restricted Win32 API calls (see [sandbox restrictions](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#general-sandbox-restrictions))
+  - [ ] File operations only use allowed directories (`D:\home`, `D:\local`, `%TEMP%`)
 
 ## 🏗️ Infrastructure Preparation
 

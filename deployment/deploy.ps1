@@ -104,7 +104,7 @@ try {
 </head>
 <body>
     <h1 class="header">🚀 Delphi ISAPI Filter Deployed Successfully!</h1>
-    <p class="success">Your legacy Delphi 6 ISAPI filter is now running on Azure App Service.</p>
+    <p class="success">Your legacy Delphi ISAPI filter is now running on Azure App Service.</p>
     <h3>Deployment Information:</h3>
     <ul>
         <li><strong>ISAPI DLL:</strong> $dllName</li>

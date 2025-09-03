@@ -1,6 +1,10 @@
-# Delphi 6 ISAPI Filter Migration to Azure App Service
+# Delphi ISAPI Filter Migration to Azure App Service
 
-This repository contains all the necessary files and step-by-step instructions to migrate a legacy Delphi 6 ISAPI filter application to Microsoft Azure App Service.
+This repository contains all the necessary files and step-by-step instructions to migrate a legacy Delphi ISAPI filter application to Microsoft Azure App Service.
+
+> 📖 **Official Documentation**: For comprehensive Azure App Service guidance, see the [Azure App Service Documentation](https://docs.microsoft.com/azure/app-service/) and [ISAPI Extension and Filter support](https://docs.microsoft.com/azure/app-service/configure-language-dotnetframework#isapi-extensions-and-filters).
+
+> ⚠️ **Important**: Before migrating, review the [Azure Web App Sandbox Restrictions](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#general-sandbox-restrictions) to understand platform limitations that may affect your ISAPI filter.
 
 ## 📋 Prerequisites
 
@@ -122,9 +126,13 @@ Your legacy shared folder can be replaced with:
 
 ## 📚 Additional Resources
 
+- [Azure App Service Documentation](https://docs.microsoft.com/azure/app-service/)
+- [ISAPI Extensions and Filters on App Service](https://docs.microsoft.com/azure/app-service/configure-language-dotnetframework#isapi-extensions-and-filters)
+- [Azure Web App Sandbox Restrictions](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#general-sandbox-restrictions)
+- [Azure Bicep Documentation](https://docs.microsoft.com/azure/azure-resource-manager/bicep/)
 - [Troubleshooting Guide](docs/troubleshooting.md)
 - [Migration Checklist](docs/migration-checklist.md)
-- [Azure App Service Documentation](https://docs.microsoft.com/azure/app-service/)
+- [Azure App Service Pricing](https://azure.microsoft.com/pricing/details/app-service/windows/)
 
 ## 🆘 Support
 
@@ -136,9 +144,10 @@ If you encounter issues:
 
 ## 📝 Notes
 
-- ISAPI filters on App Service have limitations compared to full IIS
+- ISAPI filters on App Service have limitations compared to full IIS - see [Azure Web App Sandbox Restrictions](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#general-sandbox-restrictions)
 - Consider modernizing to ASP.NET Core for better cloud-native support
 - Test thoroughly in a development environment before production deployment
+- Review [Azure App Service limitations](https://docs.microsoft.com/azure/app-service/overview-compare) for ISAPI compatibility
 
 ---
 

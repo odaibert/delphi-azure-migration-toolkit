@@ -1,6 +1,35 @@
 # Troubleshooting Guide - ISAPI Filter on Azure App Service
 
-This guide helps you diagnose and resolve common issues when migrating Delphi 6 ISAPI filters to Azure App Service.
+This guide helps you diagnose and resolve common issues when migrating Delphi ISAPI filters to Azure App Service.
+
+> 📖 **Official Resources**: 
+> - [Azure App Service Troubleshooting](https://docs.microsoft.com/azure/app-service/troubleshoot-http-502-503)
+> - [Azure Web App Sandbox Restrictions](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#general-sandbox-restrictions)
+> - [ISAPI Extensions and Filters Documentation](https://docs.microsoft.com/azure/app-service/configure-language-dotnetframework#isapi-extensions-and-filters)
+
+## ⚠️ Azure App Service Sandbox Limitations
+
+Before troubleshooting, understand these key limitations that affect ISAPI filters:
+
+### File System Restrictions
+- **Read-only file system**: Most of the file system is read-only except for specific directories
+- **Writable directories**: Only `D:\home`, `D:\local`, and `%TEMP%` are writable
+- **No registry access**: Registry operations will fail
+- **Limited file operations**: Some file system APIs are restricted
+
+### Process and Security Restrictions  
+- **No admin privileges**: Processes run with limited privileges
+- **Network restrictions**: Outbound connections to certain ports are blocked
+- **Process creation limits**: Limited ability to spawn new processes
+- **DLL loading restrictions**: Some system DLLs cannot be loaded
+
+### Platform Limitations
+- **Win32 API restrictions**: Many Win32 APIs are not available or restricted
+- **COM/DCOM limitations**: Limited COM component support
+- **Service dependencies**: Cannot access Windows services
+- **Hardware access**: No direct hardware access
+
+> 📖 **Complete list**: See [Azure Web App Sandbox Restrictions](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#general-sandbox-restrictions) for comprehensive details.
 
 ## 🚨 Common Issues and Solutions
 
@@ -65,8 +94,9 @@ az webapp log download --name your-app-service --resource-group your-rg
 **Common Causes:**
 - Missing write permissions to temp directories
 - Database connection failures
-- Registry access (not available in App Service)
+- Registry access attempts (not available in App Service sandbox)
 - File path issues (different from IIS on-premises)
+- Win32 API calls that are restricted in the sandbox environment
 
 ### 3. Shared Folder Access Issues
 
@@ -265,6 +295,8 @@ az monitor metrics list --resource "/subscriptions/your-sub/resourceGroups/your-
 1. **Azure Documentation:**
    - [App Service documentation](https://docs.microsoft.com/azure/app-service/)
    - [IIS on App Service](https://docs.microsoft.com/azure/app-service/configure-common)
+   - [Azure Web App Sandbox Restrictions](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#general-sandbox-restrictions)
+   - [Troubleshooting App Service](https://docs.microsoft.com/azure/app-service/troubleshoot-http-502-503)
 
 2. **Community Forums:**
    - [Microsoft Q&A](https://docs.microsoft.com/answers/)
@@ -290,6 +322,62 @@ az webapp config show --name your-app-service --resource-group your-rg > app-con
 az webapp config appsettings list --name your-app-service --resource-group your-rg > app-settings.json
 ```
 
+### 7. Azure Sandbox-Specific Issues
+
+#### Symptoms:
+- "Access denied" errors for file operations
+- Registry access failures
+- Win32 API call failures
+- Process creation errors
+
+#### Solutions:
+
+**File System Operations:**
+```pascal
+// ❌ Avoid - Will fail in Azure App Service
+function GetTempPath: string;
+begin
+  Result := 'C:\temp\'; // Restricted path
+end;
+
+// ✅ Recommended - Use environment variables
+function GetTempPath: string;
+begin
+  Result := GetEnvironmentVariable('TEMP');
+  if Result = '' then
+    Result := 'D:\local\temp\'; // App Service temp directory
+end;
+```
+
+**Registry Operations:**
+```pascal
+// ❌ Avoid - Registry access is blocked
+function ReadRegistryValue: string;
+begin
+  // Registry operations will fail
+end;
+
+// ✅ Recommended - Use app settings instead
+function ReadConfigValue: string;
+begin
+  Result := GetEnvironmentVariable('MY_CONFIG_VALUE');
+end;
+```
+
+**Process Creation:**
+```pascal
+// ❌ Avoid - Limited process creation
+CreateProcess('external.exe', ...); // May fail
+
+// ✅ Recommended - Use built-in libraries or web services
+// Consider Azure Functions for external processing
+```
+
+**Debugging Sandbox Issues:**
+- Check [Azure Web App Sandbox Restrictions](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#general-sandbox-restrictions)
+- Use Application Insights to trace restricted API calls
+- Test locally with similar restrictions using Windows containers
+
 ## 📊 Performance Optimization
 
 ### App Service Plan Optimization
@@ -314,4 +402,13 @@ az monitor autoscale create --resource-group your-rg --resource "/subscriptions/
 
 ---
 
-Remember: Migration to cloud often requires some code changes for optimal performance and compatibility. Consider modernizing to ASP.NET Core for better cloud-native support in the long term.
+Remember: Migration to cloud often requires code changes for optimal performance and compatibility. Consider modernizing to ASP.NET Core for better cloud-native support in the long term.
+
+## 📖 Additional Microsoft Documentation
+
+- [Azure App Service Overview](https://docs.microsoft.com/azure/app-service/overview)
+- [Configure Windows apps in Azure App Service](https://docs.microsoft.com/azure/app-service/configure-language-dotnetframework)
+- [Azure App Service diagnostics overview](https://docs.microsoft.com/azure/app-service/overview-diagnostics)
+- [Monitor Azure App Service performance](https://docs.microsoft.com/azure/app-service/web-sites-monitor)
+- [Best practices for Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-best-practices)
+- [Azure Resource Manager templates for App Service](https://docs.microsoft.com/azure/app-service/deploy-resource-manager-template)
