@@ -31,8 +31,22 @@ This repository contains all the necessary files and step-by-step instructions t
 └── docs/                   # Additional documentation
     ├── troubleshooting.md
     ├── migration-checklist.md
-    └── azure-sandbox-checklist.md
+    ├── azure-sandbox-checklist.md
+    ├── architecture-diagram.svg
+    └── simple-architecture-diagram.svg
 ```
+
+## 🏗️ Architecture Overview
+
+The migration transforms your legacy on-premises Delphi ISAPI infrastructure into a modern, cloud-native Azure solution:
+
+### Visual Architecture
+- **[Detailed Architecture Diagram](docs/architecture-diagram.svg)** - Comprehensive before/after comparison with all components
+- **[Simple Architecture Diagram](docs/simple-architecture-diagram.svg)** - Simplified overview of the migration
+
+### Key Changes
+- **From**: Manual Windows Server + IIS + Local SQL Server + File System Access
+- **To**: Azure App Service + Azure SQL Database + Azure Storage + Managed Services
 
 ## 🚀 Step-by-Step Migration Guide
 
