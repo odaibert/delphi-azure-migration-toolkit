@@ -1,61 +1,70 @@
 # Delphi ISAPI Filter Migration to Azure App Service
 
-This repository contains all the necessary files and step-by-step instructions to migrate a legacy Delphi ISAPI filter application to Microsoft Azure App Service.
+Migrate legacy Delphi ISAPI filter applications to Microsoft Azure App Service using proven cloud migration patterns and Infrastructure as Code.
 
-> 📖 **Official Documentation**: For comprehensive Azure App Service guidance, see the [Azure App Service Documentation](https://docs.microsoft.com/azure/app-service/) and [ISAPI Extension and Filter support](https://docs.microsoft.com/azure/app-service/configure-language-dotnetframework#isapi-extensions-and-filters).
+> 📖 **Microsoft Documentation**: [Azure App Service overview](https://learn.microsoft.com/azure/app-service/overview) | [ISAPI extensions and filters](https://learn.microsoft.com/azure/app-service/configure-language-dotnetframework#isapi-extensions-and-filters)
 
-> ⚠️ **Important**: Before migrating, review the [Azure Web App Sandbox Restrictions](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#general-sandbox-restrictions) to understand platform limitations. See our comprehensive [Azure Sandbox Checklist](docs/azure-sandbox-checklist.md) for detailed coverage of each restriction with official Microsoft documentation references.
+> ⚠️ **Platform Limitations**: Review [Azure App Service sandbox restrictions](https://learn.microsoft.com/azure/app-service/overview-security#sandboxed-environment) before migration. Use our [Azure Platform Compatibility Assessment](docs/azure-sandbox-checklist.md) for detailed restriction analysis.
 
-## 🎯 Choose Your Learning Path
+## 🎯 Migration Approach Selection
 
-Select the approach that best fits your experience level and time constraints:
+Choose your migration strategy based on technical requirements and organizational constraints:
 
-### 🚀 **Quick Start (30 minutes)**
-Perfect for experienced developers who want to get up and running fast.
-- **[Quick Start Guide](guides/quick-start/README.md)**
-- Streamlined steps with minimal explanation
-- Assumes familiarity with Azure and PowerShell
-- Get your ISAPI filter running in Azure quickly
+### 🚀 **Rapid Migration (2-4 hours)**
+Lift-and-shift approach for compatible applications.
+- **[Rapid Migration Guide](guides/rapid-migration/README.md)**
+- Pre-validated ISAPI compatibility
+- Minimal code modifications required
+- Direct Azure App Service deployment
 
-### 📚 **Detailed Academic Guide (2-3 hours)**
-Comprehensive, professor-led approach with deep explanations.
-- **[Detailed Step-by-Step Guide](guides/detailed/README.md)**
-- In-depth explanations of each concept
-- Troubleshooting scenarios and best practices
-- Perfect for learning Azure App Service thoroughly
-- Modular approach with focused lessons
+### 🏗️ **Comprehensive Migration (1-2 weeks)**
+Complete assessment and optimization for enterprise workloads.
+- **[Enterprise Migration Guide](guides/enterprise/README.md)**
+- Platform compatibility assessment
+- Architecture optimization and modernization
+- Production-ready deployment automation
+
+### 📊 **Platform Comparison Analysis**
+Evaluate Azure hosting options for your specific requirements.
+- **[Azure Platform Decision Matrix](guides/platform-comparison/README.md)**
+- App Service vs Container Apps vs AKS analysis
+- Cost and complexity trade-offs
+- Future modernization pathways
 
 ---
 
-## 📋 Prerequisites
+## 🏗️ Technical Prerequisites
 
-- Azure subscription
-- Azure CLI installed
-- Your compiled ISAPI DLL file
-- PowerShell (for Windows deployment scripts)
+Configure your development environment before migration:
+- [Azure subscription](https://azure.microsoft.com/free/) with Contributor access
+- [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli) 2.50.0 or later
+- [PowerShell 7.0+](https://learn.microsoft.com/powershell/scripting/install/installing-powershell) or Windows PowerShell 5.1
+- Compiled ISAPI DLL and source code access
 
-## 🏗️ Repository Structure
+## 🗂️ Repository Structure
 
 ```
-├── README.md                 # This file - migration overview
-├── guides/                   # Step-by-step guides
-│   ├── quick-start/          # Fast-track deployment (30 min)
-│   │   └── README.md         # Streamlined migration steps
-│   └── detailed/             # Academic detailed guide (2-3 hours)
-│       ├── README.md         # Comprehensive learning path
-│       └── modules/          # Individual learning modules
-├── infrastructure/           # Azure infrastructure files
-│   └── bicep/               # ARM/Bicep templates
-│       ├── main.bicep       # Main infrastructure template
-│       └── parameters.json  # Environment parameters
-├── deployment/              # Deployment scripts and configs
-│   ├── deploy.ps1          # PowerShell deployment script
+├── README.md                 # Migration overview and strategy selection
+├── guides/                   # Implementation guides
+│   ├── rapid-migration/      # Lift-and-shift deployment (2-4 hours)
+│   │   └── README.md         # Rapid migration procedures
+│   ├── enterprise/           # Comprehensive migration (1-2 weeks)
+│   │   ├── README.md         # Enterprise migration framework
+│   │   └── modules/          # Technical implementation modules
+│   └── platform-comparison/  # Azure platform decision matrix
+│       └── README.md         # App Service vs Container Apps vs AKS
+├── infrastructure/           # Infrastructure as Code templates
+│   └── bicep/               # Azure Bicep templates
+│       ├── main.bicep       # App Service infrastructure
+│       └── parameters.json  # Environment configurations
+├── deployment/              # Deployment automation
+│   ├── deploy.ps1          # PowerShell deployment scripts
 │   ├── web.config          # IIS configuration for ISAPI
 │   └── applicationHost.config # Advanced IIS settings
-├── scripts/                # Utility scripts
+├── scripts/                # Utility and validation scripts
 │   ├── setup-environment.ps1
-│   └── test-deployment.ps1
-└── docs/                   # Additional documentation
+│   └── validate-deployment.ps1
+└── docs/                   # Technical documentation
     ├── troubleshooting.md
     ├── migration-checklist.md
     ├── azure-sandbox-checklist.md
@@ -63,29 +72,39 @@ Comprehensive, professor-led approach with deep explanations.
     └── simple-architecture-diagram.svg
 ```
 
-## 🏗️ Architecture Overview
+## 🏗️ Solution Architecture
 
-The migration transforms your legacy on-premises Delphi ISAPI infrastructure into a modern, cloud-native Azure solution:
+Transform legacy on-premises ISAPI infrastructure to cloud-native Azure services:
 
-### Visual Architecture
-- **[Detailed Architecture Diagram](docs/architecture-diagram.svg)** - Comprehensive before/after comparison with all components
-- **[Simple Architecture Diagram](docs/simple-architecture-diagram.svg)** - Simplified overview of the migration
+### Reference Architecture
+- **[Detailed Architecture Diagram](docs/architecture-diagram.svg)** - Complete migration transformation
+- **[Simplified Architecture Overview](docs/simple-architecture-diagram.svg)** - High-level component mapping
 
-### Key Changes
-- **From**: Manual Windows Server + IIS + Local SQL Server + File System Access
-- **To**: Azure App Service + Azure SQL Database + Azure Storage + Managed Services
+### Migration Transformation
+- **Legacy**: Windows Server + IIS + Local SQL Server + File System
+- **Modern**: [Azure App Service](https://learn.microsoft.com/azure/app-service/overview) + [Azure SQL Database](https://learn.microsoft.com/azure/azure-sql/database/sql-database-paas-overview) + [Azure Storage](https://learn.microsoft.com/azure/storage/common/storage-introduction)
 
-## 🎓 Learning Resources
+## 📚 Technical Documentation
 
-### Documentation & References
-- **[Troubleshooting Guide](docs/troubleshooting.md)** - Common issues and solutions
-- **[Migration Checklist](docs/migration-checklist.md)** - Complete migration verification
-- **[Azure Sandbox Checklist](docs/azure-sandbox-checklist.md)** - Sandbox compatibility guide
+### Implementation Resources
+- **[Migration Troubleshooting](docs/troubleshooting.md)** - Common issues and resolutions
+- **[Pre-migration Checklist](docs/migration-checklist.md)** - Migration readiness validation
+- **[Azure Platform Compatibility](docs/azure-sandbox-checklist.md)** - Sandbox restriction analysis
 
-### Community & Support
-- [GitHub Issues](https://github.com/odaibert/delphi-azure-migration-toolkit/issues) - Report bugs or ask questions
-- [Azure App Service Documentation](https://docs.microsoft.com/azure/app-service/) - Official Microsoft documentation
-- [Azure Community Forums](https://docs.microsoft.com/answers/topics/azure-app-service.html) - Community support
+### Microsoft Learn References
+- [Configure App Service plans](https://learn.microsoft.com/training/modules/configure-app-service-plans/)
+- [Deploy applications to App Service](https://learn.microsoft.com/training/modules/deploy-app-service/)
+- [Monitor App Service performance](https://learn.microsoft.com/training/modules/monitor-app-service-performance/)
+
+## 🤝 Support and Contribution
+
+### Technical Support
+- [GitHub Issues](https://github.com/odaibert/delphi-azure-migration-toolkit/issues) - Report issues and request features
+- [Azure App Service documentation](https://learn.microsoft.com/azure/app-service/) - Official Microsoft documentation
+- [Azure Community Support](https://learn.microsoft.com/answers/tags/azure-app-service/) - Community-driven support forum
+
+### Contributing
+Follow [Microsoft's contribution guidelines](https://learn.microsoft.com/contribute/) for documentation improvements and code contributions.
 
 1. **Deploy the infrastructure**:
    ```powershell
