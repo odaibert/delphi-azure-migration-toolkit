@@ -16,8 +16,10 @@
 
 ## 🏗️ **Architecture Transformation**
 
+![Migration Architecture](./docs/architecture-diagram.svg)
+
 <details>
-<summary>🔍 <strong>Click to view Migration Architecture</strong></summary>
+<summary>🔍 <strong>Click to view detailed Migration Architecture</strong></summary>
 
 ### **Legacy On-Premises Architecture**
 ```
@@ -73,7 +75,7 @@
 
 ---
 
-> 📖 **Microsoft Documentation**: [Azure App Service overview](https://learn.microsoft.com/azure/app-service/overview) | [ISAPI extensions and filters](https://learn.microsoft.com/azure/app-service/configure-language-dotnetframework#isapi-extensions-and-filters)
+> 📖 **Microsoft Documentation**: [Azure App Service overview](https://learn.microsoft.com/azure/app-service/overview) | [App Service sandbox environment](https://learn.microsoft.com/azure/app-service/overview-security#sandboxed-environment)
 
 > ⚠️ **Platform Limitations**: Review [Azure App Service sandbox restrictions](https://learn.microsoft.com/azure/app-service/overview-security#sandboxed-environment) before migration. Use our [Azure Platform Compatibility Assessment](docs/azure-sandbox-checklist.md) for detailed restriction analysis.
 
@@ -438,9 +440,9 @@ worldwide
 ### **🎓 Microsoft Learn Modules**
 - **[Configure App Service plans](https://learn.microsoft.com/training/modules/configure-app-service-plans/)**  
   Optimize performance and costs
-- **[Deploy applications to App Service](https://learn.microsoft.com/training/modules/deploy-app-service/)**  
+- **[Deploy to App Service](https://learn.microsoft.com/azure/app-service/deploy-continuous-deployment)**  
   Professional deployment strategies  
-- **[Monitor App Service performance](https://learn.microsoft.com/training/modules/monitor-app-service-performance/)**  
+- **[Monitor App Service](https://learn.microsoft.com/azure/azure-monitor/app/azure-web-apps)**  
   Production monitoring and alerting
 
 </td>

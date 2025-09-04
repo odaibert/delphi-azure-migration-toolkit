@@ -749,7 +749,7 @@ Write-Host "Security test results exported to: security-test-results.csv" -Foreg
 - [Azure Load Testing](https://learn.microsoft.com/azure/load-testing/)
 - [Application Insights availability tests](https://learn.microsoft.com/azure/azure-monitor/app/availability-overview)
 - [Azure Security Benchmark](https://learn.microsoft.com/security/benchmark/azure/)
-- [App Service performance testing](https://learn.microsoft.com/azure/app-service/app-service-web-app-performance-test)
+- [App Service monitoring](https://learn.microsoft.com/azure/app-service/web-sites-monitor)
 
 ---
 
