@@ -6,7 +6,7 @@ Deploy your Delphi ISAPI filter to Azure App Service using a lift-and-shift appr
 🎯 **Target Scenario**: Compatible ISAPI applications requiring rapid cloud migration  
 📋 **Prerequisites**: Azure subscription, Azure CLI, PowerShell, compiled ISAPI DLL
 
-> 📖 **Microsoft Learn**: [Deploy applications to Azure App Service](https://learn.microsoft.com/training/modules/deploy-app-service/)
+> 📖 **Microsoft Learn**: [Azure App Service deployment](https://learn.microsoft.com/azure/app-service/deploy-continuous-deployment)
 
 ## Prerequisites Validation
 
@@ -73,7 +73,7 @@ az webapp config set --resource-group $resourceGroup --name $appName --net-frame
 .\deployment\deploy.ps1 -ResourceGroupName $resourceGroup -AppName $appName
 ```
 
-**Reference**: [Configure a .NET Framework app for Azure App Service](https://learn.microsoft.com/azure/app-service/configure-language-dotnetframework)
+**Reference**: [Configure Windows Apps in Azure App Service](https://learn.microsoft.com/azure/app-service/configure-common)
 
 ### Step 4: Validate Deployment
 

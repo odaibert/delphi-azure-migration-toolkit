@@ -205,7 +205,7 @@ If you encounter issues with downloading or using these files:
 2. Review the **migration checklist** (`docs/migration-checklist.md`)
 3. Consult [Azure App Service documentation](https://docs.microsoft.com/azure/app-service/)
 4. Review [Azure Web App Sandbox Restrictions](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#general-sandbox-restrictions)
-5. Check [ISAPI Extensions and Filters support](https://docs.microsoft.com/azure/app-service/configure-language-dotnetframework#isapi-extensions-and-filters)
+5. Check [Azure App Service Configuration documentation](https://learn.microsoft.com/azure/app-service/configure-common)
 
 ## 🏁 Next Steps
 

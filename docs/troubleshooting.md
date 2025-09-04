@@ -5,7 +5,7 @@ This guide helps you diagnose and resolve common issues when migrating Delphi IS
 > 📖 **Official Resources**: 
 > - [Azure App Service Troubleshooting](https://docs.microsoft.com/azure/app-service/troubleshoot-http-502-503)
 > - [Azure Web App Sandbox Restrictions](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#general-sandbox-restrictions)
-> - [ISAPI Extensions and Filters Documentation](https://docs.microsoft.com/azure/app-service/configure-language-dotnetframework#isapi-extensions-and-filters)
+> - [Azure App Service Configuration](https://learn.microsoft.com/azure/app-service/configure-common)
 
 ## ⚠️ Azure App Service Sandbox Limitations
 
@@ -407,7 +407,7 @@ Remember: Migration to cloud often requires code changes for optimal performance
 ## 📖 Additional Microsoft Documentation
 
 - [Azure App Service Overview](https://docs.microsoft.com/azure/app-service/overview)
-- [Configure Windows apps in Azure App Service](https://docs.microsoft.com/azure/app-service/configure-language-dotnetframework)
+- [Configure Windows apps in Azure App Service](https://learn.microsoft.com/azure/app-service/configure-common)
 - [Azure App Service diagnostics overview](https://docs.microsoft.com/azure/app-service/overview-diagnostics)
 - [Monitor Azure App Service performance](https://docs.microsoft.com/azure/app-service/web-sites-monitor)
 - [Best practices for Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-best-practices)

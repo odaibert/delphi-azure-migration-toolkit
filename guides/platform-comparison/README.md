@@ -16,7 +16,7 @@ Select the optimal Azure compute platform for your Delphi ISAPI filter migration
 | **Cost (Small App)** | $ | $$ | $$$ |
 | **Operational Complexity** | Low | Medium | High |
 | **Future Modernization** | Limited | Good | Excellent |
-| **Windows Support** | ✅ [Native](https://learn.microsoft.com/azure/app-service/configure-language-dotnetframework) | ✅ [Windows containers](https://learn.microsoft.com/azure/container-apps/windows-containers) | ✅ [Windows nodes](https://learn.microsoft.com/azure/aks/windows-aks-cli) |
+| **Windows Support** | ✅ [Native](https://learn.microsoft.com/azure/app-service/configure-common) | ✅ [Windows containers](https://learn.microsoft.com/azure/container-apps/windows-containers) | ✅ [Windows nodes](https://learn.microsoft.com/azure/aks/windows-aks-cli) |
 
 ## Decision Framework
 
@@ -36,7 +36,7 @@ Select the optimal Azure compute platform for your Delphi ISAPI filter migration
 - **Multi-cloud portability** is important
 - **Willing to containerize** the ISAPI application
 
-**Microsoft Learn**: [Introduction to Azure Container Apps](https://learn.microsoft.com/training/modules/intro-to-azure-container-apps/)
+**Microsoft Learn**: [Implement Azure Container Apps](https://learn.microsoft.com/training/modules/implement-azure-container-apps/)
 
 ### Use AKS When:
 - **Enterprise Kubernetes** strategy exists
