@@ -520,7 +520,7 @@ Production-ready with full automation
 
 ### **� Questions? Need Help?**
 
-**[📖 Check our FAQ](docs/faq.md)** | **[💬 Ask the Community](https://github.com/odaibert/delphi-azure-migration-toolkit/discussions)** | **[📧 Get Support](mailto:support@example.com)**
+**[📖 Check our FAQ](docs/faq.md)** | **[💬 Ask the Community](https://github.com/odaibert/delphi-azure-migration-toolkit/discussions)** | **[� Report Issues](https://github.com/odaibert/delphi-azure-migration-toolkit/issues)**
 
 ---
 
