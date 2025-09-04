@@ -3,8 +3,8 @@
 targetScope = 'subscription'
 
 param policyName string = 'ISAPI-Migration-Security-Policy'
-param displayName string = 'Delphi ISAPI Migration Security Requirements'
-param description string = 'Security policy for migrated Delphi ISAPI applications'
+param displayName string = 'ISAPI Migration Security Requirements'
+param description string = 'Security policy for migrated ISAPI applications'
 
 // Policy definition for App Service security requirements
 resource securityPolicy 'Microsoft.Authorization/policyDefinitions@2021-06-01' = {

@@ -6,7 +6,7 @@ param(
     [string]$Location = "East US",
     
     [Parameter(Mandatory=$false)]
-    [string]$AppName = "delphi-isapi-app",
+    [string]$AppName = "isapi-app",
     
     [Parameter(Mandatory=$false)]
     [string]$SubscriptionId = ""

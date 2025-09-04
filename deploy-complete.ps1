@@ -1,7 +1,7 @@
 #!/usr/bin/env pwsh
 <#
 .SYNOPSIS
-    Complete deployment script for Delphi ISAPI Filter Migration to Azure App Service
+    Complete deployment script for ISAPI Filter Migration to Azure App Service
     
 .DESCRIPTION
     This script performs end-to-end deployment including:
@@ -28,7 +28,7 @@
     Skip infrastructure deployment (use existing resources)
     
 .EXAMPLE
-    .\deploy-complete.ps1 -ResourceGroupName "rg-delphi-migration" -AppName "my-isapi-app" -ISAPIPath ".\MyFilter.dll"
+    .\deploy-complete.ps1 -ResourceGroupName "rg-isapi-migration" -AppName "my-isapi-app" -ISAPIPath ".\MyFilter.dll"
 #>
 
 [CmdletBinding()]
@@ -63,8 +63,8 @@ function Write-Warning { param($Message) Write-Host "⚠️  $Message" -Foregrou
 function Write-Error { param($Message) Write-Host "❌ $Message" -ForegroundColor Red }
 
 Write-Host @"
-🚀 Delphi ISAPI to Azure App Service Deployment
-================================================
+🚀 ISAPI to Azure App Service Deployment
+=========================================
 
 "@ -ForegroundColor Magenta
 

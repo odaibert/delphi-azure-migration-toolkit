@@ -1,6 +1,6 @@
 # Azure App Service Sandbox Restrictions Checklist
 
-This comprehensive checklist addresses specific Azure App Service sandbox limitations that may affect your Delphi ISAPI filter migration. Each restriction is documented with official Microsoft references.
+This comprehensive checklist addresses specific Azure App Service sandbox limitations that may affect your ISAPI filter migration. Each restriction is documented with official Microsoft references.
 
 > 📖 **Primary Reference**: [Azure Web App Sandbox Restrictions](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#general-sandbox-restrictions)
 

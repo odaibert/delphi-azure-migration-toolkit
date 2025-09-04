@@ -150,4 +150,4 @@
 
 ---
 
-**Can't find your answer?** [Ask the community](https://github.com/odaibert/delphi-azure-migration-toolkit/discussions) or [create an issue](https://github.com/odaibert/delphi-azure-migration-toolkit/issues)!
+**Can't find your answer?** [Ask the community](https://github.com/odaibert/isapi-azure-migration-toolkit/discussions) or [create an issue](https://github.com/odaibert/isapi-azure-migration-toolkit/issues)!

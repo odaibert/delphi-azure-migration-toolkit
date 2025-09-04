@@ -1,14 +1,18 @@
-# 🚀 Delphi ISAPI Filter Migration to Azure App Service
+# 🚀 ISAPI Filter Migration to Azure App Service
 
 <div align="center">
 
 ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)
-![Delphi](https://img.shields.io/badge/Delphi_RAD%20Studio-B22222?style=for-the-badge&logo=delphi&logoColor=white)
+![ISAPI](https://img.shields.io/badge/ISAPI-Windows-0078D4?style=for-the-badge&logo=windows&logoColor=white)
 ![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white)
 
-**Transform your legacy Delphi ISAPI applications into cloud-native Azure solutions**
+**Transform your legacy ISAPI applications into cloud-native Azure solutions**
 
-*Professional migration toolkit with enterprise-grade automation and zero-downtime deployment*
+*Professiona##### **📞 Questions? Need Help?**
+
+**[📖 Check our FAQ](docs/faq.md)** | **[💬 Ask the Community](https://github.com/odaibert/isapi-azure-migration-toolkit/discussions)** | **[🐛 Report Issues](https://github.com/odaibert/isapi-azure-migration-toolkit/issues)***[📖 Check our FAQ](docs/faq.md)** | **[💬 Ask the Community](https://github.com/odaibert/isapi-azure-migration-toolkit/discussions)** | **[🐛 Report Issues](https://github.com/odaibert/isapi-azure-migration-toolkit/issues)***📞 Questions? Need Help?**
+
+**[📖 Check our FAQ](docs/faq.md)** | **[💬 Ask the Community](https://github.com/odaibert/isapi-azure-migration-toolkit/discussions)** | **[🐛 Report Issues](https://github.com/odaibert/isapi-azure-migration-toolkit/issues)**igration toolkit with enterprise-grade automation and zero-downtime deployment*
 
 </div>
 
@@ -216,7 +220,7 @@
 <summary>🗂️ <strong>Click to expand repository structure</strong></summary>
 
 ```
-delphi-azure-migration-toolkit/
+isapi-azure-migration-toolkit/
 ├── 📖 README.md                    # This file - migration overview
 ├── 📂 guides/                      # Step-by-step implementation guides
 │   ├── 🚀 rapid-migration/         # Quick lift-and-shift (2-4 hours)
@@ -264,7 +268,7 @@ delphi-azure-migration-toolkit/
 
 <div align="center">
 
-**Get your Delphi ISAPI application running on Azure in under 30 minutes**
+**Get your ISAPI application running on Azure in under 30 minutes**
 
 </div>
 
@@ -275,8 +279,8 @@ delphi-azure-migration-toolkit/
 
 ```powershell
 # Clone the repository
-git clone https://github.com/odaibert/delphi-azure-migration-toolkit.git
-cd delphi-azure-migration-toolkit
+git clone https://github.com/odaibert/isapi-azure-migration-toolkit.git
+cd isapi-azure-migration-toolkit
 
 # Set up your Azure environment
 .\scripts\setup-environment.ps1 -SubscriptionId "your-subscription-id" -Location "East US 2"
@@ -449,7 +453,7 @@ worldwide
 <td width="33%">
 
 ### **🤝 Community & Support**
-- **[GitHub Issues](https://github.com/odaibert/delphi-azure-migration-toolkit/issues)**  
+- **[GitHub Issues](https://github.com/odaibert/isapi-azure-migration-toolkit/issues)**  
   Report bugs and request features
 - **[Azure App Service Docs](https://learn.microsoft.com/azure/app-service/)**  
   Official Microsoft documentation
@@ -466,7 +470,7 @@ worldwide
 
 <div align="center">
 
-**Help improve this migration toolkit for the Delphi community**
+**Help improve this migration toolkit for the ISAPI community**
 
 </div>
 
@@ -481,7 +485,7 @@ We welcome contributions following [Microsoft's contribution guidelines](https:/
 
 <div align="center">
 
-**[Start Contributing →](CONTRIBUTING.md)** | **[View Contributors →](https://github.com/odaibert/delphi-azure-migration-toolkit/graphs/contributors)**
+**[Start Contributing →](CONTRIBUTING.md)** | **[View Contributors →](https://github.com/odaibert/isapi-azure-migration-toolkit/graphs/contributors)**
 
 </div>
 

@@ -1,6 +1,6 @@
-# Enterprise Migration Framework - Delphi ISAPI to Azure App Service
+# Enterprise Migration Framework - ISAPI to Azure App Service
 
-Comprehensive migration methodology for enterprise-grade Delphi ISAPI filter applications to Azure App Service, including assessment, optimization, and production deployment.
+Comprehensive migration methodology for enterprise-grade ISAPI filter applications to Azure App Service, including assessment, optimization, and production deployment.
 
 🏢 **Implementation Approach**: Enterprise migration framework with comprehensive assessment  
 ⏱️ **Implementation Time**: 1-2 weeks  
@@ -106,8 +106,8 @@ az account list --output table
 az account set --subscription "your-subscription-id"
 
 # Clone migration toolkit
-git clone https://github.com/odaibert/delphi-azure-migration-toolkit.git
-Set-Location delphi-azure-migration-toolkit
+git clone https://github.com/odaibert/isapi-azure-migration-toolkit.git
+Set-Location isapi-azure-migration-toolkit
 ```
 
 ## 🎯 Implementation Paths

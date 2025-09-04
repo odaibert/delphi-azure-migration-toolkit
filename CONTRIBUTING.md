@@ -1,12 +1,12 @@
-# Contributing to Delphi Azure Migration Toolkit
+# Contributing to ISAPI Azure Migration Toolkit
 
-Thank you for your interest in contributing to the Delphi Azure Migration Toolkit! This project helps the Delphi community migrate legacy ISAPI applications to modern Azure cloud infrastructure.
+Thank you for your interest in contributing to the ISAPI Azure Migration Toolkit! This project helps the development community migrate legacy ISAPI applications to modern Azure cloud infrastructure.
 
 ## 🤝 How to Contribute
 
 ### 🐛 Reporting Issues
 - Use GitHub Issues to report bugs or compatibility problems
-- Include your Delphi version, ISAPI implementation details, and error messages
+- Include your development environment, ISAPI implementation details, and error messages
 - Provide minimal reproducible examples when possible
 
 ### 📖 Improving Documentation
@@ -37,8 +37,8 @@ Thank you for your interest in contributing to the Delphi Azure Migration Toolki
 ### Development Setup
 ```powershell
 # Clone your fork
-git clone https://github.com/YOUR-USERNAME/delphi-azure-migration-toolkit.git
-cd delphi-azure-migration-toolkit
+git clone https://github.com/YOUR-USERNAME/isapi-azure-migration-toolkit.git
+cd isapi-azure-migration-toolkit
 
 # Create feature branch
 git checkout -b feature/your-feature-name
@@ -77,4 +77,4 @@ This project follows Microsoft's Open Source Code of Conduct. Please be respectf
 
 ---
 
-**Thank you for helping improve Azure migration for the Delphi community!** 🚀
+**Thank you for helping improve Azure migration for the development community!** 🚀

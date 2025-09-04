@@ -1,4 +1,4 @@
-# Azure DevOps Pipeline for Delphi ISAPI Migration
+# Azure DevOps Pipeline for ISAPI Migration
 # This pipeline automates the build, test, and deployment process
 
 name: ISAPI-Migration-$(Date:yyyyMMdd)-$(Rev:r)

@@ -1,6 +1,6 @@
 # Azure App Service Security Hardening Guide
 
-This guide provides comprehensive security hardening recommendations for Delphi ISAPI applications deployed to Azure App Service.
+This guide provides comprehensive security hardening recommendations for ISAPI applications deployed to Azure App Service.
 
 ## 🔒 Core Security Configuration
 

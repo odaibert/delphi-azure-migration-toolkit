@@ -1,13 +1,13 @@
 # 🚀 Quick Deployment Guide
 
-This guide will help you deploy your Delphi ISAPI application to Azure App Service.
+This guide will help you deploy your ISAPI application to Azure App Service.
 
 ## 📋 Prerequisites
 
 1. **Azure CLI** - [Install Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 2. **PowerShell 7+** - [Install PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)
 3. **Azure Subscription** - Active Azure subscription
-4. **ISAPI Filter DLL** - Your compiled Delphi ISAPI filter
+4. **ISAPI Filter DLL** - Your compiled ISAPI filter
 
 ## ⚡ Quick Start (5 minutes)
 
