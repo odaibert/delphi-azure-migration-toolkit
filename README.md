@@ -16,7 +16,7 @@
 
 ## 🏗️ **Architecture Transformation**
 
-![Migration Architecture](./docs/assets/architecture-diagram.svg)
+![Migration Architecture](./docs/architecture-diagram.svg)
 
 <details>
 <summary>🔍 <strong>Click to view detailed Migration Architecture</strong></summary>
