@@ -8,7 +8,7 @@ Enterprise-grade compliance framework ensuring Delphi ISAPI applications meet Az
 
 ## Compliance Framework Overview
 
-This module implements [Azure App Service sandbox security model](https://learn.microsoft.com/azure/app-service/overview-app-service-sandbox) compliance, ensuring applications operate within platform constraints while maintaining functionality and security.
+This module implements [Azure App Service operating system functionality](https://learn.microsoft.com/azure/app-service/operating-system-functionality) compliance, ensuring applications operate within platform constraints while maintaining functionality and security.
 
 ### Compliance Deliverables
 
@@ -37,7 +37,7 @@ Azure App Service implements multi-layered security through sandbox isolation:
 └─────────────────────────────────────┘
 ```
 
-> 📖 **Reference**: [App Service sandbox overview](https://learn.microsoft.com/azure/app-service/overview-app-service-sandbox)
+> 📖 **Reference**: [App Service operating system functionality](https://learn.microsoft.com/azure/app-service/operating-system-functionality)
 
 ### **Critical Platform Restrictions**
 
@@ -97,7 +97,7 @@ $ViolationPatterns = @{
         Category = 'Hard-coded System Paths'
         Impact = 'File operations will fail in sandbox environment'
         Solution = 'Use application directory or Azure Blob Storage'
-        Documentation = 'https://learn.microsoft.com/azure/app-service/overview-app-service-sandbox'
+        Documentation = 'https://learn.microsoft.com/azure/app-service/operating-system-functionality'
     }
     'ProcessCreation' = @{
         Pattern = '(CreateProcess|ShellExecute|WinExec|CreateProcessAsUser|system\()'
@@ -113,7 +113,7 @@ $ViolationPatterns = @{
         Category = 'Out-of-Process COM'
         Impact = 'COM server creation will fail'
         Solution = 'Use Azure services or in-process libraries'
-        Documentation = 'https://learn.microsoft.com/azure/app-service/overview-app-service-sandbox'
+        Documentation = 'https://learn.microsoft.com/azure/app-service/operating-system-functionality'
     }
     'Win32UI' = @{
         Pattern = '(User32\.dll|GDI32\.dll|CreateWindow|MessageBox|FindWindow|GetDesktopWindow)'
@@ -121,7 +121,7 @@ $ViolationPatterns = @{
         Category = 'Win32 UI APIs'
         Impact = 'UI operations not supported in server environment'
         Solution = 'Remove UI code or implement web-based interface'
-        Documentation = 'https://learn.microsoft.com/azure/app-service/overview-app-service-sandbox'
+        Documentation = 'https://learn.microsoft.com/azure/app-service/operating-system-functionality'
     }
     'EventLog' = @{
         Pattern = '(EventLog|ReportEvent|RegisterEventSource|OpenEventLog)'
@@ -137,7 +137,7 @@ $ViolationPatterns = @{
         Category = 'Low-level Network Operations'
         Impact = 'Direct socket operations are restricted'
         Solution = 'Use HTTP/HTTPS client libraries'
-        Documentation = 'https://learn.microsoft.com/azure/app-service/overview-app-service-sandbox'
+        Documentation = 'https://learn.microsoft.com/azure/app-service/operating-system-functionality'
     }
 }
 
@@ -411,7 +411,7 @@ $HtmlReport += @"
         
         <h2>📚 Additional Resources</h2>
         <ul>
-            <li><a href="https://learn.microsoft.com/azure/app-service/overview-app-service-sandbox" target="_blank">Azure App Service Sandbox Overview</a></li>
+            <li><a href="https://learn.microsoft.com/azure/app-service/operating-system-functionality" target="_blank">Azure App Service Operating System Functionality</a></li>
             <li><a href="https://learn.microsoft.com/azure/app-service/configure-common" target="_blank">Configure App Settings</a></li>
             <li><a href="https://learn.microsoft.com/azure/azure-monitor/app/asp-net" target="_blank">Application Insights for .NET</a></li>
             <li><a href="https://learn.microsoft.com/azure/storage/blobs/" target="_blank">Azure Blob Storage</a></li>

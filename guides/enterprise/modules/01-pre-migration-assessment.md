@@ -280,7 +280,7 @@ Based on your assessment, reference the [Platform Comparison Guide](../../platfo
 - [Azure App Service documentation](https://learn.microsoft.com/azure/app-service/)
 - [Cloud Adoption Framework - Migrate](https://learn.microsoft.com/azure/cloud-adoption-framework/migrate/)
 - [Azure Well-Architected Framework](https://learn.microsoft.com/azure/architecture/framework/)
-- [App Service sandbox limitations](https://learn.microsoft.com/azure/app-service/overview-app-service-sandbox)
+- [App Service operating system functionality](https://learn.microsoft.com/azure/app-service/operating-system-functionality)
 
 ---
 
