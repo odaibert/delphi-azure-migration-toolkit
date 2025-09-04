@@ -8,11 +8,15 @@
 
 **Transform your legacy ISAPI applications into cloud-native Azure solutions**
 
-*Professiona##### **📞 Questions? Need Help?**
+*Professional mi##### **📞 Questions? Need Help?**
 
-**[📖 Check our FAQ](docs/faq.md)** | **[💬 Ask the Community](https://github.com/odaibert/isapi-azure-migration-toolkit/discussions)** | **[🐛 Report Issues](https://github.com/odaibert/isapi-azure-migration-toolkit/issues)***[📖 Check our FAQ](docs/faq.md)** | **[💬 Ask the Community](https://github.com/odaibert/isapi-azure-migration-toolkit/discussions)** | **[🐛 Report Issues](https://github.com/odaibert/isapi-azure-migration-toolkit/issues)***📞 Questions? Need Help?**
+**[📖 Check our FAQ](docs/faq.md)** | **[💬 Ask the Community](https://github.com/odaibert/isapi-azure-migration-toolkit/discussions)** | **[🐛 Report Issues](https://github.com/odaibert/isapi-azure-migration-toolkit/issues)***📞 Questions? Need Help?**
 
-**[📖 Check our FAQ](docs/faq.md)** | **[💬 Ask the Community](https://github.com/odaibert/isapi-azure-migration-toolkit/discussions)** | **[🐛 Report Issues](https://github.com/odaibert/isapi-azure-migration-toolkit/issues)**igration toolkit with enterprise-grade automation and zero-downtime deployment*
+**[📖 Check our FAQ](docs/faq.md)** | **[💬 Ask the Community](https://github.com/odaibert/isapi-azure-migration-toolkit/discussions)** | **[🐛 Report Issues](https://github.com/odaibert/isapi-azure-migration-toolkit/issues)**tion toolkit with enterprise-grade automation and zero-downtime deployment*
+
+##### **📞 Questions? Need Help?**
+
+**[📖 Check our FAQ](docs/faq.md)** | **[💬 Ask the Community](https://github.com/odaibert/isapi-azure-migration-toolkit/discussions)** | **[🐛 Report Issues](https://github.com/odaibert/isapi-azure-migration-toolkit/issues)**
 
 </div>
 
