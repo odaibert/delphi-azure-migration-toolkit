@@ -727,7 +727,7 @@ if ($SuccessRate -ge 99) {
 - [ ] **Stakeholder Approval** - Business stakeholders approve go-live
 - [ ] **Deployment Window** - Maintenance window scheduled and communicated
 - [ ] **Rollback Plan** - Emergency rollback procedures tested and ready
-- [ ] **Team Availability** - Technical support team available during deployment
+- [ ] **Team Availability** - Technical team available during deployment
 - [ ] **Communication Plan** - User communication and status page updates prepared
 - [ ] **Database Backup** - Recent database backup verified and tested
 - [ ] **Configuration Backup** - Current production configuration saved

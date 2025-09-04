@@ -128,7 +128,7 @@ az webapp log download --name YOUR_APP_NAME --resource-group YOUR_RG_NAME
 # Go to: https://YOUR_APP_NAME.scm.azurewebsites.net/webssh/host
 ```
 
-## 📱 Post-Deployment Checklist
+## � Post-Deployment Checklist
 
 - [ ] Test ISAPI filter functionality
 - [ ] Configure custom domain (if needed)
@@ -145,12 +145,12 @@ az webapp log download --name YOUR_APP_NAME --resource-group YOUR_RG_NAME
 - [Troubleshooting Guide](./docs/troubleshooting.md)
 - [Azure Portal](https://portal.azure.com/)
 
-## 🆘 Need Help?
+## 🔧 Additional Support
 
 1. Check the [troubleshooting guide](./docs/troubleshooting.md)
 2. Review App Service logs in Azure Portal
 3. Use the enterprise migration modules in `./guides/enterprise/`
-4. Contact Azure Support for complex issues
+4. Refer to Azure documentation for complex scenarios
 
 ---
 

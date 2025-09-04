@@ -65,11 +65,11 @@ We especially welcome contributions in:
 - **Monitoring**: Application Insights and diagnostics
 - **Automation**: CI/CD pipeline improvements
 
-## 📞 Getting Help
+## � Getting Help
 
-- **Discussions**: Use GitHub Discussions for questions
-- **Issues**: Report bugs or request features
-- **Documentation**: Check existing guides and troubleshooting
+- **Discussions**: Use GitHub Discussions for technical questions
+- **Issues**: Report bugs or request features through GitHub Issues
+- **Documentation**: Check existing guides and troubleshooting resources
 
 ## 📜 Code of Conduct
 
@@ -77,4 +77,4 @@ This project follows Microsoft's Open Source Code of Conduct. Please be respectf
 
 ---
 
-**Thank you for helping improve Azure migration for the development community!** 🚀
+**Thank you for contributing to the Azure migration community!** 🚀

@@ -42,3 +42,36 @@ deployment/YourISAPIFilter.dll
 
 # PowerShell execution logs
 execution-*.log
+
+# Test applications and marketing materials
+test-*/
+marketing-*.html
+cheat-sheet.html
+*-test.html
+
+# .NET build artifacts (if any test projects are added)
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+!deployment/*.dll
+
+# Visual Studio files
+*.sln
+*.csproj
+*.vcxproj
+*.user
+.vs/
+
+# Build outputs
+publish/
+build/
+output/
+
+# Package files
+*.nupkg
+*.snupkg
+
+# Local test deployments
+deployment*.zip

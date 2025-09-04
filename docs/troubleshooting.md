@@ -306,9 +306,9 @@ az monitor metrics list --resource "/subscriptions/your-sub/resourceGroups/your-
    - Create support ticket in Azure Portal
    - Use Azure Advisor recommendations
 
-### Logs to Collect for Support
+### Diagnostic Information to Collect
 
-When contacting support, gather these logs:
+When troubleshooting issues, gather these logs:
 
 ```powershell
 # Download all available logs
