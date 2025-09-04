@@ -1,6 +1,6 @@
 # Troubleshooting Guide - ISAPI Filter on Azure App Service
 
-This guide helps you diagnose and resolve common issues when migrating Delphi ISAPI filters to Azure App Service.
+This guide helps you diagnose and resolve common issues when migrating ISAPI filters to Azure App Service.
 
 > 📖 **Official Resources**: 
 > - [Azure App Service Troubleshooting](https://docs.microsoft.com/azure/app-service/troubleshoot-http-502-503)
@@ -54,7 +54,7 @@ file YourISAPIFilter.dll
 # Use Dependency Walker or similar tool to check missing dependencies
 # Common missing dependencies:
 # - MSVCRT libraries
-# - Delphi runtime libraries
+# - Application runtime libraries
 # - Custom third-party DLLs
 ```
 

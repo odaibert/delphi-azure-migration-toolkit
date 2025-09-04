@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISAPI Filter - Azure App Service</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        .status {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid #4CAF50;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .info-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .info-card h3 {
+            margin: 0 0 10px 0;
+            color: #FFD54F;
+        }
+        .warning {
+            background: rgba(255, 193, 7, 0.2);
+            border: 1px solid #FFC107;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .next-steps {
+            background: rgba(33, 150, 243, 0.2);
+            border: 1px solid #2196F3;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .next-steps h3 {
+            margin-top: 0;
+            color: #64B5F6;
+        }
+        .next-steps ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .next-steps li {
+            margin: 8px 0;
+        }
+        code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 ISAPI Filter Migration</h1>
+        
+        <div class="status">
+            <strong>✅ Infrastructure Status:</strong> Azure App Service is running successfully!<br>
+            <strong>📅 Deployed:</strong> <script>document.write(new Date().toLocaleDateString());</script><br>
+            <strong>🌐 Environment:</strong> Azure App Service (Windows)
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>🏗️ Infrastructure</h3>
+                <p><strong>App Service Plan:</strong> S1 (Standard)</p>
+                <p><strong>Platform:</strong> Windows Server</p>
+                <p><strong>Runtime:</strong> IIS with .NET Framework</p>
+                <p><strong>Architecture:</strong> 32-bit (ISAPI compatible)</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>⚙️ Configuration</h3>
+                <p><strong>ISAPI Support:</strong> Enabled</p>
+                <p><strong>Application Insights:</strong> Configured</p>
+                <p><strong>Shared Storage:</strong> Azure Files</p>
+                <p><strong>Logging:</strong> Enhanced</p>
+            </div>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ ISAPI Filter Not Yet Deployed</strong><br>
+            This page confirms your Azure infrastructure is ready, but your ISAPI filter has not been deployed yet.
+        </div>
+
+        <div class="next-steps">
+            <h3>📝 Next Steps to Complete Migration:</h3>
+            <ol>
+                <li><strong>Upload your ISAPI Filter DLL:</strong>
+                    <br>Use the deployment script: <code>.\deployment\deploy.ps1 -ISAPIFilePath "YourFilter.dll"</code>
+                </li>
+                <li><strong>Configure web.config:</strong>
+                    <br>Ensure your ISAPI filter is registered in the web.config file
+                </li>
+                <li><strong>Test ISAPI endpoints:</strong>
+                    <br>Navigate to your specific ISAPI filter endpoints (not this root page)
+                </li>
+                <li><strong>Monitor and validate:</strong>
+                    <br>Check Application Insights for performance and errors
+                </li>
+            </ol>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>🔗 Management Links</h3>
+                <p><a href="https://portal.azure.com" target="_blank" style="color: #FFD54F;">Azure Portal</a></p>
+                <p><a href="#" onclick="window.open(window.location.origin.replace('https://', 'https://') + '.scm.azurewebsites.net')" style="color: #FFD54F;">Kudu Console</a></p>
+            </div>
+            
+            <div class="info-card">
+                <h3>📊 System Information</h3>
+                <p><strong>Server:</strong> <script>document.write(window.location.hostname);</script></p>
+                <p><strong>User Agent:</strong> <script>document.write(navigator.userAgent.split(' ')[0]);</script></p>
+                <p><strong>Time:</strong> <script>document.write(new Date().toLocaleTimeString());</script></p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>ISAPI to Azure App Service Migration Toolkit</p>
+            <p>📚 For detailed guidance, see the repository documentation</p>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive elements
+        console.log('🚀 ISAPI Migration - Azure App Service Ready!');
+        console.log('📋 Infrastructure Status: Operational');
+        console.log('⚠️  Next: Deploy your ISAPI filter DLL');
+    </script>
+</body>
+</html>

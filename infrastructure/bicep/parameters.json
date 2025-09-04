@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "appName": {
-      "value": "delphi-isapi-app"
+      "value": "isapi-app"
     },
     "location": {
       "value": "East US"

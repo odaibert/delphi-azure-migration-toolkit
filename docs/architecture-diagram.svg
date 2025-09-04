@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="1000" height="700" xmlns="http://www.w3.org/2000/svg">
   <!-- Title -->
-  <text x="500" y="30" text-anchor="middle" font-family="Arial" font-size="22" font-weight="bold" fill="#2c3e50">Delphi ISAPI Migration: Before vs After</text>
+  <text x="500" y="30" text-anchor="middle" font-family="Arial" font-size="22" font-weight="bold" fill="#2c3e50">ISAPI Migration: Before vs After</text>
   
   <!-- BEFORE Section -->
   <text x="250" y="70" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#e74c3c">BEFORE: Legacy On-Premises</text>
@@ -17,7 +17,7 @@
   
   <rect x="220" y="100" width="120" height="60" rx="5" fill="#fff3cd" stroke="#856404" stroke-width="1"/>
   <text x="280" y="125" text-anchor="middle" font-family="Arial" font-size="12" fill="#2c3e50">IIS + ISAPI</text>
-  <text x="280" y="140" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Delphi DLL</text>
+  <text x="280" y="140" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">ISAPI DLL</text>
   <text x="280" y="155" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Legacy Code</text>
   
   <rect x="80" y="180" width="120" height="60" rx="5" fill="#ffffff" stroke="#666666" stroke-width="1"/>
@@ -112,8 +112,8 @@
   <text x="785" y="550" text-anchor="middle" font-family="Arial" font-size="9" fill="#7f8c8d">Scripts</text>
   
   <!-- Repository Info -->
-  <text x="500" y="590" text-anchor="middle" font-family="Arial" font-size="12" fill="#2c3e50">Complete migration toolkit from legacy Delphi ISAPI to modern Azure App Service</text>
-  <text x="500" y="610" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Repository: https://github.com/odaibert/delphi-azure-migration-toolkit</text>
+  <text x="500" y="590" text-anchor="middle" font-family="Arial" font-size="12" fill="#2c3e50">Complete migration toolkit from legacy ISAPI to modern Azure App Service</text>
+  <text x="500" y="610" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Repository: https://github.com/odaibert/isapi-azure-migration-toolkit</text>
   
   <!-- Arrow marker definition -->
   <defs>

@@ -1,6 +1,6 @@
-# Rapid Migration Guide - Delphi ISAPI to Azure App Service
+# Rapid Migration Guide - ISAPI to Azure App Service
 
-Deploy your Delphi ISAPI filter to Azure App Service using a lift-and-shift approach with minimal code modifications.
+Deploy your ISAPI filter to Azure App Service using a lift-and-shift approach with minimal code modifications.
 
 ⏱️ **Implementation Time**: 2-4 hours  
 🎯 **Target Scenario**: Compatible ISAPI applications requiring rapid cloud migration  
@@ -32,7 +32,7 @@ az login
 az account set --subscription "your-subscription-id"
 
 # Create resource group
-$resourceGroup = "rg-delphi-isapi-prod"
+$resourceGroup = "rg-isapi-prod"
 $location = "East US"
 az group create --name $resourceGroup --location $location
 ```
@@ -48,7 +48,7 @@ Deploy App Service infrastructure using Azure Bicep:
 az deployment group create \
   --resource-group $resourceGroup \
   --template-file "infrastructure/bicep/main.bicep" \
-  --parameters appName="delphi-isapi-app" \
+  --parameters appName="isapi-app" \
                environment="prod" \
                appServicePlanSku="S1" \
                sqlDatabaseTier="Standard"
@@ -66,7 +66,7 @@ $isapiDllPath = "C:\path\to\your\isapi.dll"
 Copy-Item $isapiDllPath "deployment\"
 
 # Configure App Service for ISAPI
-$appName = "delphi-isapi-app"
+$appName = "isapi-app"
 az webapp config set --resource-group $resourceGroup --name $appName --net-framework-version "v4.8"
 
 # Deploy ISAPI application

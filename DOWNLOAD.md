@@ -1,6 +1,6 @@
 # Download Instructions
 
-This file contains all the necessary files to migrate your Delphi ISAPI filter to Azure App Service. 
+This file contains all the necessary files to migrate your ISAPI filter to Azure App Service. 
 
 > 📖 **Before You Start**: Review the [Azure Web App Sandbox Restrictions](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#general-sandbox-restrictions) and [Azure App Service Documentation](https://docs.microsoft.com/azure/app-service/) to understand platform limitations.
 
@@ -45,7 +45,7 @@ If this is a Git repository:
 
 ```bash
 git clone [repository-url]
-cd "Delphi ISAPI to App Service"
+cd "ISAPI to App Service"
 ```
 
 ## 🚀 Quick Start Guide
@@ -56,7 +56,7 @@ After downloading all files:
 
 ```powershell
 # Navigate to the project directory
-cd "path\to\Delphi ISAPI to App Service"
+cd "path\to\ISAPI to App Service"
 
 # Run the environment setup script
 .\scripts\setup-environment.ps1
