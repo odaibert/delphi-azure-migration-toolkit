@@ -8,15 +8,7 @@
 
 **Transform your legacy ISAPI applications into cloud-native Azure solutions**
 
-*Professional mi##### **📞 Questions? Need Help?**
-
-**[📖 Check our FAQ](docs/faq.md)** | **[💬 Ask the Community](https://github.com/odaibert/isapi-azure-migration-toolkit/discussions)** | **[🐛 Report Issues](https://github.com/odaibert/isapi-azure-migration-toolkit/issues)***📞 Questions? Need Help?**
-
-**[📖 Check our FAQ](docs/faq.md)** | **[💬 Ask the Community](https://github.com/odaibert/isapi-azure-migration-toolkit/discussions)** | **[🐛 Report Issues](https://github.com/odaibert/isapi-azure-migration-toolkit/issues)**tion toolkit with enterprise-grade automation and zero-downtime deployment*
-
-##### **📞 Questions? Need Help?**
-
-**[📖 Check our FAQ](docs/faq.md)** | **[💬 Ask the Community](https://github.com/odaibert/isapi-azure-migration-toolkit/discussions)** | **[🐛 Report Issues](https://github.com/odaibert/isapi-azure-migration-toolkit/issues)**
+*Professional migration toolkit with enterprise-grade automation and zero-downtime deployment*
 
 </div>
 
@@ -218,7 +210,7 @@
 </tr>
 </table>
 
-## � **Repository Structure**
+## 📁 **Repository Structure**
 
 <details>
 <summary>🗂️ <strong>Click to expand repository structure</strong></summary>
@@ -526,12 +518,15 @@ Production-ready with full automation
 </tr>
 </table>
 
-### **� Questions? Need Help?**
+### **📚 Additional Resources**
 
-**[📖 Check our FAQ](docs/faq.md)** | **[💬 Ask the Community](https://github.com/odaibert/delphi-azure-migration-toolkit/discussions)** | **[� Report Issues](https://github.com/odaibert/delphi-azure-migration-toolkit/issues)**
+- **[📖 Frequently Asked Questions](docs/faq.md)** - Common migration scenarios and troubleshooting
+- **[📋 Migration Checklist](docs/migration-checklist.md)** - Step-by-step migration validation
+- **[🔒 Security Hardening](docs/security-hardening.md)** - Enterprise security best practices
+- **[🛠️ Troubleshooting Guide](docs/troubleshooting.md)** - Common issues and solutions
 
----
+### **🤝 Community**
 
-**⭐ If this toolkit helps your migration, please star the repository to help others discover it!**
+This toolkit is open source and community-driven. Contributions, feedback, and improvements are welcome through GitHub issues and pull requests.
 
 </div>

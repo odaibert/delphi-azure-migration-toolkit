@@ -197,7 +197,7 @@ If any files are missing or corrupted:
 2. Check file integrity
 3. Ensure all directories are created properly
 
-## 📞 Support
+## � Additional Resources
 
 If you encounter issues with downloading or using these files:
 

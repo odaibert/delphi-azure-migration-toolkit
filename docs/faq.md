@@ -3,7 +3,25 @@
 ## 🚀 Getting Started
 
 ### Q: Which migration path should I choose?
-**A:** Use the **Rapid Migration** for development/testing or simple applications. Choose **Enterprise Migration** for production applications with complex requirements, compliance needs, or custom integrations.
+**A:** Use the **Rapid Mi## 📚 Additional Resources
+
+### Q: Where can I get more help?
+**A:** 
+- **GitHub Issues**: Report bugs or request features
+- **GitHub Discussions**: Community questions and guidance
+- **Azure Support**: Official Microsoft support plans
+- **Microsoft Learn**: Comprehensive Azure documentation
+
+### Q: How do I contribute to this project?
+**A:** See our [Contributing Guide](CONTRIBUTING.md) for:
+- Code contributions
+- Documentation improvements
+- Bug reports and feature requests
+- Community support
+
+---
+
+**Need more information?** Check the [troubleshooting guide](troubleshooting.md) or explore the [Microsoft Learn documentation](https://learn.microsoft.com/azure/app-service/).opment/testing or simple applications. Choose **Enterprise Migration** for production applications with complex requirements, compliance needs, or custom integrations.
 
 ### Q: How long does migration take?
 **A:** 
@@ -132,7 +150,7 @@
 3. Swap slots for zero-downtime deployment
 4. Swap back if issues occur
 
-## 📞 Getting Additional Help
+## � Getting Additional Help
 
 ### Q: Where can I get more support?
 **A:** 
