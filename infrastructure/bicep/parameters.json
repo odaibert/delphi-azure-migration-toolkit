@@ -9,7 +9,7 @@
       "value": "East US"
     },
     "appServicePlanSku": {
-      "value": "S1"
+      "value": "B1"
     },
     "enableApplicationInsights": {
       "value": true
