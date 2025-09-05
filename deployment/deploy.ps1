@@ -15,19 +15,90 @@ param(
     [string]$SubscriptionId = "",
     
     [Parameter(Mandatory=$false)]
-    [switch]$Force
+    [switch]$Force,
+    
+    [Parameter(Mandatory=$false)]
+    [switch]$ValidateOnly,
+    
+    [Parameter(Mandatory=$false)]
+    [switch]$SkipDependencyCheck
 )
 
 # Script to deploy ISAPI filter to Azure App Service
-Write-Host "🚀 Starting ISAPI Filter Deployment to Azure App Service" -ForegroundColor Green
+Write-Host "🚀 ISAPI Filter Deployment to Azure App Service" -ForegroundColor Green
+Write-Host "Resource Group: $ResourceGroupName" -ForegroundColor Cyan
+Write-Host "App Service: $AppServiceName" -ForegroundColor Cyan
+Write-Host "ISAPI DLL: $ISAPIFilePath" -ForegroundColor Cyan
+Write-Host
 
-# Check if Azure CLI is installed
+$DeploymentResults = @{
+    PreValidation = $false
+    AzureConnection = $false
+    ResourceValidation = $false
+    DLLValidation = $false
+    Deployment = $false
+    PostValidation = $false
+    OverallSuccess = $false
+}
+
+# Pre-deployment validation
+Write-Host "🔍 Pre-Deployment Validation..." -ForegroundColor Yellow
+
+# Check if Azure CLI is installed and working
 try {
     $azVersion = az version --output json 2>$null | ConvertFrom-Json
     Write-Host "✅ Azure CLI version: $($azVersion.'azure-cli')" -ForegroundColor Green
+    $DeploymentResults.PreValidation = $true
 } catch {
-    Write-Error "❌ Azure CLI is not installed or not in PATH. Please install Azure CLI first."
+    Write-Host "❌ Azure CLI is not installed or not in PATH" -ForegroundColor Red
+    Write-Host "💡 Install Azure CLI from: https://learn.microsoft.com/cli/azure/install-azure-cli" -ForegroundColor Blue
     exit 1
+}
+
+# Validate ISAPI DLL exists and architecture
+if (-not (Test-Path $ISAPIFilePath)) {
+    Write-Host "❌ ISAPI DLL not found: $ISAPIFilePath" -ForegroundColor Red
+    exit 1
+}
+
+Write-Host "✅ ISAPI DLL found: $ISAPIFilePath" -ForegroundColor Green
+
+# Run DLL validation if dependency checker is available and not skipped
+if (-not $SkipDependencyCheck) {
+    $DependencyScript = Join-Path $PSScriptRoot "..\scripts\check-delphi-dependencies.ps1"
+    if (Test-Path $DependencyScript) {
+        Write-Host "🔍 Running DLL validation..." -ForegroundColor Yellow
+        try {
+            $ValidationResult = & $DependencyScript -DllPath $ISAPIFilePath
+            if ($ValidationResult.OverallSuccess) {
+                Write-Host "✅ DLL validation passed" -ForegroundColor Green
+                $DeploymentResults.DLLValidation = $true
+            } else {
+                Write-Host "❌ DLL validation failed - deployment may not work correctly" -ForegroundColor Red
+                if (-not $Force) {
+                    Write-Host "💡 Use -Force to proceed anyway or fix the issues above" -ForegroundColor Blue
+                    exit 1
+                } else {
+                    Write-Host "⚠️ Proceeding with deployment despite validation issues (Force mode)" -ForegroundColor Yellow
+                }
+            }
+        } catch {
+            Write-Host "⚠️ DLL validation failed: $($_.Exception.Message)" -ForegroundColor Yellow
+            if (-not $Force) {
+                exit 1
+            }
+        }
+    } else {
+        Write-Host "⚠️ DLL validation script not found - skipping validation" -ForegroundColor Yellow
+    }
+} else {
+    Write-Host "ℹ️ Skipping DLL validation (SkipDependencyCheck specified)" -ForegroundColor Cyan
+    $DeploymentResults.DLLValidation = $true
+}
+
+if ($ValidateOnly) {
+    Write-Host "✅ Validation completed (ValidateOnly mode)" -ForegroundColor Green
+    exit 0
 }
 
 # Login check

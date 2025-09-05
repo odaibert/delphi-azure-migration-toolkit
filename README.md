@@ -1,20 +1,31 @@
-# 🚀 ISAPI Filter Migration to Azure App Service
+# 🚀 No-Code-Change ISAPI Migration to Azure App Service
 
 <div align="center">
 
 ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)
 ![ISAPI](https://img.shields.io/badge/ISAPI-Windows-0078D4?style=for-the-badge&logo=windows&logoColor=white)
+![No Code](https://img.shields.io/badge/No%20Code%20Change-Required-28a745?style=for-the-badge&logo=checkmarx&logoColor=white)
 ![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white)
 
-**Transform your legacy ISAPI applications into cloud-native Azure solutions**
+**Migrate your existing ISAPI DLLs to Azure App Service WITHOUT any source code changes**
 
-*Professional migration toolkit with enterprise-grade automation and zero-downtime deployment*
+*Enterprise-grade toolkit for seamless Windows Server + IIS to Azure App Service migration*
 
 </div>
 
 ---
 
-## 🏗️ **Architecture Transformation**
+## 🎯 **Zero-Code-Change Migration Philosophy**
+
+This toolkit enables you to migrate existing ISAPI applications from Windows Server + IIS to Azure App Service **without modifying a single line of source code**. The solution focuses on:
+
+- **🔒 No Source Code Access Required**: Works with compiled ISAPI DLLs
+- **⚡ Minimal Downtime**: Blue-green deployment with automated rollback
+- **🛡️ Enterprise Security**: Full Azure security integration
+- **📦 Automated Packaging**: Dependencies and configuration handled automatically
+- **🔍 Comprehensive Validation**: Pre-migration compatibility checks
+
+## 🏗️ **Migration Architecture**
 
 ![Migration Architecture](./docs/architecture-diagram.svg)
 

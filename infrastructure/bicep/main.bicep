@@ -28,6 +28,22 @@ param appServicePlanSku string = 'S1'
 @description('Enable Application Insights')
 param enableApplicationInsights bool = true
 
+@description('Enable Managed Identity for secure Azure resource access')
+param enableManagedIdentity bool = true
+
+@description('Enable Azure SQL Database deployment')
+param enableAzureSQL bool = false
+
+@description('Azure SQL Database administrator login')
+param sqlAdminLogin string = 'isapiadmin'
+
+@description('Azure SQL Database administrator password')
+@secure()
+param sqlAdminPassword string = ''
+
+@description('Enable Key Vault for secrets management')
+param enableKeyVault bool = true
+
 @description('Enable Azure Files for shared folder replacement')
 param enableAzureFiles bool = true
 
@@ -35,6 +51,9 @@ param enableAzureFiles bool = true
 var appServicePlanName = 'asp-${appName}'
 var storageAccountName = 'st${replace(appName, '-', '')}${substring(uniqueString(resourceGroup().id), 0, 4)}'
 var applicationInsightsName = 'ai-${appName}'
+var keyVaultName = 'kv-${replace(appName, '-', '')}${substring(uniqueString(resourceGroup().id), 0, 4)}'
+var sqlServerName = 'sql-${appName}'
+var sqlDatabaseName = '${appName}-db'
 var fileShareName = 'isapi-shared-folder'
 
 // Storage Account for shared folder replacement
@@ -58,9 +77,67 @@ resource fileShare 'Microsoft.Storage/storageAccounts/fileServices/shares@2023-0
   properties: {
     shareQuota: 100 // 100 GB quota
   }
-  dependsOn: [
-    storageAccount
-  ]
+}
+
+// Key Vault for secrets management
+resource keyVault 'Microsoft.KeyVault/vaults@2023-02-01' = if (enableKeyVault) {
+  name: keyVaultName
+  location: location
+  properties: {
+    sku: {
+      family: 'A'
+      name: 'standard'
+    }
+    tenantId: subscription().tenantId
+    accessPolicies: []
+    enabledForDeployment: true
+    enabledForTemplateDeployment: true
+    enabledForDiskEncryption: false
+    enableRbacAuthorization: true
+    publicNetworkAccess: 'Enabled'
+    networkAcls: {
+      bypass: 'AzureServices'
+      defaultAction: 'Allow'
+    }
+  }
+}
+
+// Azure SQL Server
+resource sqlServer 'Microsoft.Sql/servers@2023-02-01-preview' = if (enableAzureSQL) {
+  name: sqlServerName
+  location: location
+  properties: {
+    administratorLogin: sqlAdminLogin
+    administratorLoginPassword: sqlAdminPassword
+    version: '12.0'
+    publicNetworkAccess: 'Enabled'
+  }
+}
+
+// Azure SQL Database
+resource sqlDatabase 'Microsoft.Sql/servers/databases@2023-02-01-preview' = if (enableAzureSQL) {
+  parent: sqlServer
+  name: sqlDatabaseName
+  location: location
+  sku: {
+    name: 'Basic'
+    tier: 'Basic'
+    capacity: 5
+  }
+  properties: {
+    collation: 'SQL_Latin1_General_CP1_CI_AS'
+    maxSizeBytes: 2147483648 // 2GB
+  }
+}
+
+// SQL Server Firewall Rule for Azure Services
+resource sqlFirewallRule 'Microsoft.Sql/servers/firewallRules@2023-02-01-preview' = if (enableAzureSQL) {
+  parent: sqlServer
+  name: 'AllowAzureServices'
+  properties: {
+    startIpAddress: '0.0.0.0'
+    endIpAddress: '0.0.0.0'
+  }
 }
 
 // Application Insights
@@ -90,6 +167,9 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2023-01-01' = {
 resource appService 'Microsoft.Web/sites@2023-01-01' = {
   name: appName
   location: location
+  identity: enableManagedIdentity ? {
+    type: 'SystemAssigned'
+  } : null
   properties: {
     serverFarmId: appServicePlan.id
     siteConfig: {
@@ -108,11 +188,11 @@ resource appService 'Microsoft.Web/sites@2023-01-01' = {
       appSettings: [
         {
           name: 'APPINSIGHTS_INSTRUMENTATIONKEY'
-          value: enableApplicationInsights ? applicationInsights.properties.InstrumentationKey : ''
+          value: enableApplicationInsights && applicationInsights != null ? applicationInsights.properties.InstrumentationKey : ''
         }
         {
           name: 'APPLICATIONINSIGHTS_CONNECTION_STRING'
-          value: enableApplicationInsights ? applicationInsights.properties.ConnectionString : ''
+          value: enableApplicationInsights && applicationInsights != null ? applicationInsights.properties.ConnectionString : ''
         }
         {
           name: 'ApplicationInsightsAgent_EXTENSION_VERSION'
@@ -124,11 +204,19 @@ resource appService 'Microsoft.Web/sites@2023-01-01' = {
         }
         {
           name: 'SHARED_FOLDER_CONNECTION'
-          value: enableAzureFiles ? 'DefaultEndpointsProtocol=https;AccountName=${storageAccount.name};AccountKey=${storageAccount.listKeys().keys[0].value};EndpointSuffix=core.windows.net' : ''
+          value: enableAzureFiles && storageAccount != null ? 'DefaultEndpointsProtocol=https;AccountName=${storageAccount.name};AccountKey=${storageAccount.listKeys().keys[0].value};EndpointSuffix=core.windows.net' : ''
         }
         {
           name: 'SHARED_FOLDER_NAME'
           value: enableAzureFiles ? fileShareName : ''
+        }
+        {
+          name: 'AZURE_SQL_CONNECTION_STRING'
+          value: enableAzureSQL ? 'Server=tcp:${sqlServer.properties.fullyQualifiedDomainName},1433;Initial Catalog=${sqlDatabaseName};Authentication=Active Directory Default;' : ''
+        }
+        {
+          name: 'KEY_VAULT_NAME'
+          value: enableKeyVault ? keyVaultName : ''
         }
       ]
     }
@@ -168,7 +256,13 @@ resource appServiceConfig 'Microsoft.Web/sites/config@2023-01-01' = {
 // Outputs
 output appServiceName string = appService.name
 output appServiceUrl string = 'https://${appService.properties.defaultHostName}'
+output appServicePrincipalId string = enableManagedIdentity && appService.identity != null ? appService.identity.principalId : ''
 output storageAccountName string = enableAzureFiles ? storageAccount.name : ''
-output storageAccountKey string = enableAzureFiles ? storageAccount.listKeys().keys[0].value : ''
 output fileShareName string = enableAzureFiles ? fileShareName : ''
 output applicationInsightsInstrumentationKey string = enableApplicationInsights ? applicationInsights.properties.InstrumentationKey : ''
+output keyVaultName string = enableKeyVault ? keyVaultName : ''
+output sqlServerName string = enableAzureSQL ? sqlServerName : ''
+output sqlDatabaseName string = enableAzureSQL ? sqlDatabaseName : ''
+
+// Secure connection string output (use Key Vault references in production)
+output azureSqlConnectionString string = enableAzureSQL ? 'Server=tcp:${sqlServer.name}.${environment().suffixes.sqlServerHostname},1433;Initial Catalog=${sqlDatabaseName};Authentication=Active Directory Default;' : ''
