@@ -81,7 +81,7 @@ Complete this assessment checklist for your ISAPI application:
 - [ ] **Framework Version**: Delphi _____ / C++ Builder _____
 - [ ] **Target Architecture**: x86 / x64 / AnyCPU
 - [ ] **External Dependencies**: List all COM components, third-party libraries
-- [ ] **Database Connectivity**: SQL Server, Oracle, OLE DB, ODBC drivers used
+- [ ] **External Service Connectivity**: HTTP APIs, web services, external integrations
 - [ ] **File System Usage**: Read/Write operations, temporary files, logging
 
 **📋 IIS Integration Points**
@@ -145,7 +145,7 @@ Evaluate your ISAPI functionality against Azure App Service capabilities:
 
 #### ✅ **Supported Operations**
 - **HTTP Request/Response Processing**: Full support with managed pipeline
-- **Database Connectivity**: SQL Database, MySQL, PostgreSQL with connection pooling
+- **API Connectivity**: REST/SOAP services with authentication and connection pooling
 - **File I/O**: Limited to application directory and temp folder
 - **Environment Variables**: Full support via app settings
 - **HTTPS/TLS**: Managed certificates and custom certificate support
@@ -170,7 +170,7 @@ Assess migration complexity using this framework:
 | Component | Complexity | Effort | Recommendation |
 |-----------|------------|--------|----------------|
 | HTTP Processing | **Low** | 1-2 days | Direct migration with minimal changes |
-| Database Access | **Medium** | 2-5 days | Update connection strings, implement retry logic |
+| External Service Access | **Medium** | 2-5 days | Update connection strings, implement retry logic |
 | File Operations | **High** | 5-10 days | Refactor to use Azure Storage or app directory |
 | COM Dependencies | **High** | 10+ days | Consider rewriting or using Azure Functions |
 | Registry Usage | **Medium** | 3-7 days | Migrate to app settings or Key Vault |
@@ -189,7 +189,7 @@ Assess migration complexity using this framework:
 - [ ] **File System Dependencies**: Refactor for sandbox restrictions
 - [ ] **Performance Counters**: Implement Application Insights telemetry
 - [ ] **Windows Authentication**: Implement Azure AD integration
-- [ ] **Legacy Database Drivers**: Update to modern connection libraries
+- [ ] **Legacy Service Drivers**: Update to modern connection libraries
 
 #### **Low Risk Factors** (Minimal Changes)
 - [ ] **HTTP Request Processing**: Standard migration path
@@ -204,7 +204,7 @@ Assess migration complexity using this framework:
 Based on your assessment results, select the optimal migration approach:
 
 #### **Lift-and-Shift Strategy** (Low Complexity)
-**When to Use**: ISAPI uses standard HTTP processing, minimal file system access, SQL Server connectivity
+**When to Use**: ISAPI uses standard HTTP processing, minimal file system access, external service connectivity
 ```
 ✅ Advantages: Fastest migration, minimal code changes
 ⚠️ Considerations: May not leverage cloud-native features

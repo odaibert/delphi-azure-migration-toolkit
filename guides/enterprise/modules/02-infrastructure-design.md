@@ -86,59 +86,58 @@ Write-Host "Recommended App Service Tier: $RecommendedTier" -ForegroundColor Yel
 Write-Host "Auto-scaling requirement: $RequiresAutoScale" -ForegroundColor Cyan
 ```
 
-## 🗄️ Database Architecture Design
+## 🗄️ Storage Architecture Design
 
-### Azure SQL Database Configuration
+### Azure Storage Configuration
 
-Design database tier aligned with current SQL Server performance:
+Design storage tier aligned with current application performance:
 
-#### **DTU vs vCore Selection Framework**
+#### **Storage Service Selection Framework**
 
-**DTU Model (Recommended for ISAPI migrations)**
-- **Simple pricing**: Predictable monthly costs
-- **Good for**: Stable ISAPI workloads with consistent database usage
-- **Cost range**: $15-$400/month for typical ISAPI applications
+**Azure Blob Storage (Recommended for ISAPI migrations)**
+- **Simple integration**: Direct HTTP/REST API access
+- **Good for**: File uploads, document storage, static content
+- **Cost range**: $20-$80/month for typical ISAPI applications
 
-**vCore Model (For complex scenarios)**
-- **Flexible scaling**: Independent compute and storage scaling
-- **Good for**: Variable workloads, specific compliance requirements
-- **Cost range**: $50-$800/month with Azure Hybrid Benefit
+**Azure Files (For shared folder replacement)**
+- **SMB protocol**: Direct replacement for network drives
+- **Good for**: Configuration files, shared application data
+- **Cost range**: $30-$120/month with standard tier
 
-#### **Database Sizing Assessment**
+#### **Storage Performance Assessment**
 
-```sql
--- SQL Server assessment script for Azure SQL Database sizing
--- Run on current SQL Server instance
+```powershell
+# PowerShell script for current storage usage assessment
+# Run on current application server
 
--- Database size and growth analysis
-SELECT 
-    DB_NAME() as DatabaseName,
-    CAST(SUM(size * 8.0 / 1024) as DECIMAL(10,2)) as CurrentSizeMB,
-    CAST(SUM(CASE WHEN type = 0 THEN size * 8.0 / 1024 END) as DECIMAL(10,2)) as DataSizeMB,
-    CAST(SUM(CASE WHEN type = 1 THEN size * 8.0 / 1024 END) as DECIMAL(10,2)) as LogSizeMB,
-    CAST(SUM(max_size * 8.0 / 1024) as DECIMAL(10,2)) as MaxSizeMB
-FROM sys.database_files;
+# File system analysis
+$StorageInfo = @()
+$AppPaths = @("C:\inetpub\wwwroot", "C:\YourApp\Data", "C:\Shared")
 
--- Performance counter analysis
-SELECT 
-    counter_name,
-    cntr_value,
-    GETDATE() as sample_time
-FROM sys.dm_os_performance_counters 
-WHERE counter_name IN (
-    'Transactions/sec',
-    'Batch Requests/sec', 
-    'SQL Compilations/sec',
-    'Page life expectancy'
-);
+foreach ($Path in $AppPaths) {
+    if (Test-Path $Path) {
+        $FolderSize = (Get-ChildItem -Path $Path -Recurse -File | Measure-Object -Property Length -Sum).Sum
+        $FileCount = (Get-ChildItem -Path $Path -Recurse -File).Count
+        
+        $StorageInfo += [PSCustomObject]@{
+            Path = $Path
+            SizeGB = [math]::Round($FolderSize / 1GB, 2)
+            FileCount = $FileCount
+            LastModified = (Get-ChildItem -Path $Path -Recurse -File | Sort-Object LastWriteTime -Descending | Select-Object -First 1).LastWriteTime
+        }
+    }
+}
 
--- Connection and session analysis
-SELECT 
-    COUNT(*) as active_connections,
-    AVG(DATEDIFF(second, login_time, GETDATE())) as avg_session_duration_sec,
-    MAX(DATEDIFF(second, login_time, GETDATE())) as max_session_duration_sec
-FROM sys.dm_exec_sessions 
-WHERE is_user_process = 1 AND status = 'running';
+$StorageInfo | Format-Table -AutoSize
+
+# I/O performance baseline
+$IoCounters = Get-Counter "\LogicalDisk(*)\Disk Reads/sec", "\LogicalDisk(*)\Disk Writes/sec" -SampleInterval 1 -MaxSamples 5
+$IoCounters.CounterSamples | Group-Object InstanceName | ForEach-Object {
+    $Reads = ($_.Group | Where-Object {$_.Path -like "*Reads*"} | Measure-Object CookedValue -Average).Average
+    $Writes = ($_.Group | Where-Object {$_.Path -like "*Writes*"} | Measure-Object CookedValue -Average).Average
+    
+    Write-Host "Drive $($_.Name): Avg Reads/sec: $([math]::Round($Reads, 2)), Avg Writes/sec: $([math]::Round($Writes, 2))"
+}
 ```
 
 ### Storage Architecture Strategy
@@ -220,18 +219,6 @@ param location string = resourceGroup().location
 @allowed(['B2', 'S1', 'S2', 'P1v3', 'P2v3'])
 param appServicePlanSku string = 'S2'
 
-@description('Azure SQL Database service tier')
-@allowed(['Basic', 'Standard', 'Premium'])
-param sqlDatabaseTier string = 'Standard'
-
-@description('Database administrator username')
-@secure()
-param sqlAdminUsername string
-
-@description('Database administrator password')
-@secure()
-param sqlAdminPassword string
-
 @description('Enable Application Insights monitoring')
 param enableMonitoring bool = true
 
@@ -240,8 +227,6 @@ param enableBlobStorage bool = true
 
 // Variable definitions
 var resourceNamePrefix = '${applicationName}-${environment}'
-var sqlServerName = '${resourceNamePrefix}-sqlserver'
-var databaseName = '${applicationName}db'
 
 // App Service Plan
 resource appServicePlan 'Microsoft.Web/serverfarms@2023-01-01' = {
@@ -339,60 +324,6 @@ resource appService 'Microsoft.Web/sites@2023-01-01' = {
     Environment: environment
     Application: applicationName
     ManagedBy: 'Bicep'
-  }
-}
-
-// Azure SQL Server
-resource sqlServer 'Microsoft.Sql/servers@2023-05-01-preview' = {
-  name: sqlServerName
-  location: location
-  properties: {
-    administratorLogin: sqlAdminUsername
-    administratorLoginPassword: sqlAdminPassword
-    version: '12.0'
-    minimalTlsVersion: '1.2'
-    publicNetworkAccess: 'Enabled'
-    restrictOutboundNetworkAccess: 'Disabled'
-  }
-  tags: {
-    Environment: environment
-    Application: applicationName
-    ManagedBy: 'Bicep'
-  }
-}
-
-// Azure SQL Database
-resource sqlDatabase 'Microsoft.Sql/servers/databases@2023-05-01-preview' = {
-  parent: sqlServer
-  name: databaseName
-  location: location
-  sku: {
-    name: sqlDatabaseTier == 'Basic' ? 'Basic' : sqlDatabaseTier == 'Standard' ? 'S1' : 'P1'
-    tier: sqlDatabaseTier
-    capacity: sqlDatabaseTier == 'Basic' ? 5 : sqlDatabaseTier == 'Standard' ? 20 : 125
-  }
-  properties: {
-    collation: 'SQL_Latin1_General_CP1_CI_AS'
-    maxSizeBytes: sqlDatabaseTier == 'Basic' ? 2147483648 : 268435456000 // 2GB or 250GB
-    catalogCollation: 'SQL_Latin1_General_CP1_CI_AS'
-    zoneRedundant: false
-    readScale: 'Disabled'
-    requestedBackupStorageRedundancy: 'Local'
-  }
-  tags: {
-    Environment: environment
-    Application: applicationName
-    ManagedBy: 'Bicep'
-  }
-}
-
-// SQL Server Firewall Rules
-resource sqlFirewallRuleAzure 'Microsoft.Sql/servers/firewallRules@2023-05-01-preview' = {
-  parent: sqlServer
-  name: 'AllowAzureServices'
-  properties: {
-    startIpAddress: '0.0.0.0'
-    endIpAddress: '0.0.0.0'
   }
 }
 
@@ -521,25 +452,6 @@ Create environment-specific parameter files for consistent deployments:
     },
     "appServicePlanSku": {
       "value": "S2"
-    },
-    "sqlDatabaseTier": {
-      "value": "Standard"
-    },
-    "sqlAdminUsername": {
-      "reference": {
-        "keyVault": {
-          "id": "/subscriptions/{subscription-id}/resourceGroups/{rg-name}/providers/Microsoft.KeyVault/vaults/{vault-name}"
-        },
-        "secretName": "sql-admin-username"
-      }
-    },
-    "sqlAdminPassword": {
-      "reference": {
-        "keyVault": {
-          "id": "/subscriptions/{subscription-id}/resourceGroups/{rg-name}/providers/Microsoft.KeyVault/vaults/{vault-name}"
-        },
-        "secretName": "sql-admin-password"
-      }
     },
     "enableMonitoring": {
       "value": true

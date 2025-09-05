@@ -34,8 +34,8 @@
                        └──────────────────┘              │
                                                           │
                        ┌──────────────────┐              │
-                       │   SQL Server     │◄─────────────┘
-                       │   Database       │
+                       │   File Storage   │◄─────────────┘
+                       │   Local Files    │
                        └──────────────────┘
 ```
 
@@ -52,8 +52,8 @@
                        └──────────────────┘              │
                                                           │
                        ┌──────────────────┐              │
-                       │ Azure SQL DB     │◄─────────────┤
-                       │   + Failover     │              │
+                       │  Azure Storage   │◄─────────────┤
+                       │   File Service   │              │
                        └──────────────────┘              │
                                                           │
                        ┌──────────────────┐              │
@@ -68,7 +68,7 @@
 | **Legacy Challenge** | **Azure Solution** | **Business Impact** |
 |---------------------|-------------------|-------------------|
 | 🔥 Single point of failure | ✅ Multi-region redundancy | 99.95% SLA uptime |
-| 💰 Hardware maintenance costs | ✅ Serverless auto-scaling | 40-60% cost reduction |
+| 💰 Hardware maintenance costs | ✅ Auto-scaling infrastructure | 40-60% cost reduction |
 | ⚡ Manual deployment processes | ✅ CI/CD automation | 90% faster deployments |
 | 🔒 Security patch management | ✅ Automatic security updates | Reduced security risk |
 | 📈 Limited scalability | ✅ Global scale on-demand | Handle traffic spikes |
@@ -196,7 +196,7 @@
 - Compiled ISAPI DLL (x64)
 - Source code access
 - Configuration files
-- Database connection strings
+- Application settings
 
 </td>
 <td>
@@ -204,7 +204,7 @@
 - Visual Studio/RAD Studio
 - IIS Manager (for testing)
 - Azure Storage Explorer
-- SQL Server Management Studio
+- Azure CLI tools
 
 </td>
 </tr>
@@ -290,7 +290,6 @@ az deployment group create \
 
 **🎯 What gets deployed:**
 - Azure App Service with ISAPI support
-- Azure SQL Database with connection pooling  
 - Azure Storage Account for file operations
 - Application Insights for monitoring
 - Azure Key Vault for secrets management
@@ -310,14 +309,14 @@ az deployment group create \
 Copy-Item "your-isapi.dll" -Destination "deployment\"
 Copy-Item "your-config-files" -Destination "deployment\config\"
 
-# Update connection strings and configurations
+# Update service configurations and app settings
 .\scripts\update-configuration.ps1 -Environment "Azure"
 ```
 
 **✅ Pre-deployment validation:**
 - [x] ISAPI DLL compiled for x64 architecture
 - [x] Dependencies identified and resolved
-- [x] Database connection strings updated
+- [x] Application settings updated
 - [x] File paths converted to Azure storage
 
 </details>
@@ -341,7 +340,7 @@ Copy-Item "your-config-files" -Destination "deployment\config\"
 **📊 Automated validation includes:**
 - ✅ Application startup and health checks
 - ✅ ISAPI filter functionality testing  
-- ✅ Database connectivity verification
+- ✅ Storage connectivity verification
 - ✅ Performance baseline establishment
 - ✅ Security configuration validation
 

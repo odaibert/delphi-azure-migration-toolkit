@@ -112,30 +112,30 @@ ENTRYPOINT ["dotnet", "ModernizedISAPI.dll"]
 **App Service (Production Ready):**
 ```text
 - App Service Plan (S1): ~$70/month
-- Azure SQL Database (S1): ~$30/month
+- Azure Storage Services: ~$20/month
 - Application Insights: ~$10/month
 - Storage Account: ~$5/month
-Total: ~$115/month
+Total: ~$105/month
 ```
 
 **Container Apps (Production Ready):**
 ```text
 - Container Apps Environment: ~$45/month
 - Container Apps consumption: ~$25/month
-- Azure SQL Database (S1): ~$30/month
+- Azure Storage Services: ~$20/month
 - Application Insights: ~$10/month
 - Container Registry: ~$5/month
-Total: ~$115/month
+Total: ~$105/month
 ```
 
 **AKS (Production Ready):**
 ```text
 - AKS Cluster Management: Free
 - Node Pool (2x Standard_D2s_v3): ~$140/month
-- Azure SQL Database (S1): ~$30/month
+- Azure Storage Services: ~$20/month
 - Application Insights: ~$10/month
 - Load Balancer: ~$20/month
-Total: ~$200/month
+Total: ~$190/month
 ```
 
 **Microsoft Reference**: [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/)

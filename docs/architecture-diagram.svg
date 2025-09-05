@@ -21,8 +21,8 @@
   <text x="280" y="155" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Legacy Code</text>
   
   <rect x="80" y="180" width="120" height="60" rx="5" fill="#ffffff" stroke="#666666" stroke-width="1"/>
-  <text x="140" y="205" text-anchor="middle" font-family="Arial" font-size="12" fill="#2c3e50">SQL Server</text>
-  <text x="140" y="220" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Local Database</text>
+  <text x="140" y="205" text-anchor="middle" font-family="Arial" font-size="12" fill="#2c3e50">File Storage</text>
+  <text x="140" y="220" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Local Files</text>
   <text x="140" y="235" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Manual Backup</text>
   
   <rect x="220" y="180" width="120" height="60" rx="5" fill="#ffffff" stroke="#666666" stroke-width="1"/>
@@ -52,8 +52,8 @@
   <text x="780" y="155" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Sandbox Compatible</text>
   
   <rect x="580" y="180" width="120" height="60" rx="5" fill="#ffffff" stroke="#666666" stroke-width="1"/>
-  <text x="640" y="205" text-anchor="middle" font-family="Arial" font-size="12" fill="#2c3e50">Azure SQL</text>
-  <text x="640" y="220" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Managed Database</text>
+  <text x="640" y="205" text-anchor="middle" font-family="Arial" font-size="12" fill="#2c3e50">Azure Storage</text>
+  <text x="640" y="220" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Blob Storage</text>
   <text x="640" y="235" text-anchor="middle" font-family="Arial" font-size="10" fill="#7f8c8d">Auto-backup</text>
   
   <rect x="720" y="180" width="120" height="60" rx="5" fill="#ffffff" stroke="#666666" stroke-width="1"/>

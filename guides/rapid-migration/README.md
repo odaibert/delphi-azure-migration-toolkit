@@ -49,9 +49,7 @@ az deployment group create \
   --resource-group $resourceGroup \
   --template-file "infrastructure/bicep/main.bicep" \
   --parameters appName="isapi-app" \
-               environment="prod" \
-               appServicePlanSku="S1" \
-               sqlDatabaseTier="Standard"
+               appServicePlanSku="S1"
 ```
 
 **Reference**: [Deploy Bicep files with Azure CLI](https://learn.microsoft.com/azure/azure-resource-manager/bicep/deploy-cli)
@@ -80,20 +78,20 @@ az webapp config set --resource-group $resourceGroup --name $appName --net-frame
 Verify successful deployment and functionality:
 
 ```powershell
-# Test application endpoint
-$appUrl = "https://$appName.azurewebsites.net"
-$response = Invoke-WebRequest -Uri $appUrl -Method GET -ErrorAction Continue
+ # Test application endpoint
+ $appUrl = "https://$appName.azurewebsites.net"
+ $response = Invoke-WebRequest -Uri $appUrl -Method GET -ErrorAction Continue
 
-if ($response.StatusCode -eq 200) {
-    Write-Host "✅ Application deployed successfully" -ForegroundColor Green
-    Write-Host "URL: $appUrl" -ForegroundColor Blue
-} else {
-    Write-Host "❌ Deployment validation failed" -ForegroundColor Red
-    Write-Host "Status Code: $($response.StatusCode)" -ForegroundColor Yellow
-}
+ if ($response.StatusCode -eq 200) {
+   Write-Host "✅ Application deployed successfully" -ForegroundColor Green
+   Write-Host "URL: $appUrl" -ForegroundColor Blue
+ } else {
+   Write-Host "❌ Deployment validation failed" -ForegroundColor Red
+   Write-Host "Status Code: $($response.StatusCode)" -ForegroundColor Yellow
+ }
 
-# Validate ISAPI filter registration
-az webapp log tail --resource-group $resourceGroup --name $appName
+ # Validate ISAPI filter registration
+ az webapp log tail --resource-group $resourceGroup --name $appName
 ```
 
 **Reference**: [Monitor Azure App Service](https://learn.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs)
@@ -104,7 +102,6 @@ az webapp log tail --resource-group $resourceGroup --name $appName
 - [ ] Azure App Service shows "Running" status in portal
 - [ ] ISAPI filter loads without errors in Application Insights
 - [ ] HTTP requests return expected responses
-- [ ] Database connectivity established (if applicable)
 - [ ] Static content serves correctly
 
 ### Common Deployment Issues
@@ -113,7 +110,6 @@ az webapp log tail --resource-group $resourceGroup --name $appName
 |-------|------------|-----------|
 | ISAPI DLL not loading | Verify [web.config configuration](../../deployment/web.config) | [Configure handlers](https://learn.microsoft.com/iis/configuration/system.webserver/handlers/) |
 | HTTP 500 errors | Check Application Insights logs | [Diagnose exceptions](https://learn.microsoft.com/azure/azure-monitor/app/asp-net-exceptions) |
-| Database connection failures | Validate connection strings in App Settings | [Configure connection strings](https://learn.microsoft.com/azure/app-service/configure-common#configure-connection-strings) |
 | Sandbox violations | Review [compatibility assessment](../../docs/azure-sandbox-checklist.md) | [App Service sandbox](https://learn.microsoft.com/azure/app-service/overview-security#sandboxed-environment) |
 
 ## Post-Deployment Tasks

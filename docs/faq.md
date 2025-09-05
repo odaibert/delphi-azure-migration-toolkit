@@ -49,12 +49,12 @@
 - **Configuration files**: Use Azure App Settings
 - **Shared files**: Use Azure Files storage
 
-### Q: What about database connections?
+### Q: How do I handle data persistence?
 **A:** Azure App Service works with:
-- **Azure SQL Database** (recommended)
-- **SQL Server on Azure VM**
-- **On-premises SQL** (with hybrid connections)
-- **Other databases** via connection strings
+- **Azure Storage** (recommended for files)
+- **Azure Tables** (for structured data)
+- **Azure Cosmos DB** (for NoSQL data)
+- **External APIs** via HTTP connections
 
 ## ⚡ Deployment Issues
 
@@ -138,7 +138,7 @@
 ### Q: My application performance is poor
 **A:** Review:
 1. **App Service Plan tier** (CPU/memory limits)
-2. **Database connection pooling** settings
+2. **Storage connection settings** optimization
 3. **Application Insights** performance data
 4. **CDN configuration** for static content
 5. **Caching strategies** (Redis Cache)

@@ -12,7 +12,7 @@ Use this checklist to ensure a successful migration of your legacy Delphi ISAPI 
   - [ ] Documented current ISAPI filter functionality
   - [ ] Identified all dependencies (DLLs, COM objects, etc.)
   - [ ] Mapped all file system operations
-  - [ ] Cataloged database connections and queries
+  - [ ] Cataloged external service connections
   - [ ] Listed all external system integrations
   - [ ] Reviewed security and authentication mechanisms
 
@@ -21,7 +21,7 @@ Use this checklist to ensure a successful migration of your legacy Delphi ISAPI 
   - [ ] Windows-specific APIs used
   - [ ] Registry dependencies
   - [ ] COM/DCOM components
-  - [ ] Database drivers and versions
+  - [ ] External service drivers and versions
   - [ ] External web services or APIs
 
 - [ ] **Infrastructure Requirements**
@@ -65,7 +65,6 @@ Use this checklist to ensure a successful migration of your legacy Delphi ISAPI 
   - [ ] Always On enabled (for production)
 
 - [ ] **Supporting Services**
-  - [ ] Azure SQL Database (if needed)
   - [ ] Azure Storage Account for file storage
   - [ ] Azure Files for shared folder replacement
   - [ ] Application Insights for monitoring
@@ -82,7 +81,7 @@ Use this checklist to ensure a successful migration of your legacy Delphi ISAPI 
 - [ ] **Data Protection**
   - [ ] Connection strings stored securely
   - [ ] API keys and secrets in Key Vault
-  - [ ] Database firewall rules configured
+  - [ ] Storage firewall rules configured
   - [ ] Encryption at rest enabled
 
 ## 📦 Application Preparation
@@ -97,7 +96,7 @@ Use this checklist to ensure a successful migration of your legacy Delphi ISAPI 
 
 - [ ] **Configuration Management**
   - [ ] Externalized configuration to app settings
-  - [ ] Updated connection strings for Azure SQL
+  - [ ] Updated connection strings for Azure services
   - [ ] Removed registry dependencies
   - [ ] Implemented environment-specific settings
 
@@ -111,7 +110,7 @@ Use this checklist to ensure a successful migration of your legacy Delphi ISAPI 
 
 - [ ] **Test Environment**
   - [ ] Development/staging App Service created
-  - [ ] Test data and database prepared
+  - [ ] Test data and storage prepared
   - [ ] Performance testing plan created
   - [ ] Security testing plan created
 

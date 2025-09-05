@@ -15,8 +15,8 @@ Our repository documentation coverage for each restriction:
 | Out-of-process COM servers | ⚠️ | [Azure App Service Platform Limitations](https://learn.microsoft.com/azure/app-service/overview) | Needs Enhancement |
 | Use of Console | ❌ | [Azure App Service Logging](https://learn.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs) | Not Covered |
 | Win32k.sys Restrictions | ❌ | [Azure Web App Sandbox](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#win32k-restrictions) | Not Covered |
-| SQL Reporting Framework | ❌ | [SQL Server on Azure VM](https://learn.microsoft.com/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview) | Not Covered |
 | PDF Generation from HTML | ❌ | [Azure Functions](https://learn.microsoft.com/azure/azure-functions/functions-overview) | Not Covered |
+| Process Enumeration | ❌ | [Azure App Service Security](https://learn.microsoft.com/azure/app-service/overview-security) | Not Covered |
 | Process Enumeration | ❌ | [Azure App Service Security](https://learn.microsoft.com/azure/app-service/overview-security) | Not Covered |
 | File System Restrictions | ✅ | [Azure App Service File System](https://learn.microsoft.com/azure/app-service/configure-common) | Documented |
 | Networking Restrictions | ✅ | [Azure App Service Networking](https://learn.microsoft.com/azure/app-service/networking-features) | Documented |
@@ -77,18 +77,7 @@ Our repository documentation coverage for each restriction:
 
 **Recommendation**: 📝 **Add new section** - Critical for ISAPI filters that use UI components or graphics operations.
 
-### ❌ **6. Microsoft SQL Reporting Framework (Manual PDF Generation)**
-
-**Current Coverage**: Not addressed.
-
-**Official Microsoft Documentation**:
-- [SQL Server Reporting Services in Azure](https://learn.microsoft.com/sql/reporting-services/install-windows/install-reporting-services-native-mode-report-server)
-- [Azure SQL Managed Instance](https://learn.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview)
-- [Migrate SSRS to Azure](https://learn.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)
-
-**Recommendation**: 📝 **Add new section** - Important for applications that generate reports or PDFs.
-
-### ❌ **7. PDF Generation from HTML**
+### ❌ **6. PDF Generation from HTML**
 
 **Current Coverage**: Not addressed.
 
@@ -198,12 +187,7 @@ Our repository documentation coverage for each restriction:
 
 ### Low Priority (Edge Cases)
 
-7. **Add SQL Reporting Services Guidance** 📝
-   - Migration alternatives
-   - Azure SQL Managed Instance options
-   - Reference: [SSRS Migration](https://learn.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)
-
-8. **Document Process Management Restrictions** 📝
+6. **Document Process Management Restrictions** 📝
    - Process enumeration limitations
    - Azure Batch alternatives for job processing
    - Reference: [Azure Batch](https://learn.microsoft.com/azure/batch/batch-technical-overview)

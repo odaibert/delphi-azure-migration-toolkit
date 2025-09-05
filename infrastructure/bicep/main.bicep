@@ -94,7 +94,7 @@ resource appService 'Microsoft.Web/sites@2023-01-01' = {
     serverFarmId: appServicePlan.id
     siteConfig: {
       netFrameworkVersion: 'v4.8'
-      use32BitWorkerProcess: false // Force 64-bit for ISAPI compatibility
+      use32BitWorkerProcess: (appServicePlanSku == 'F1' || appServicePlanSku == 'D1') // Free/Shared tiers require 32-bit
       defaultDocuments: [
         'default.htm'
         'default.html'
@@ -143,7 +143,7 @@ resource appServiceConfig 'Microsoft.Web/sites/config@2023-01-01' = {
   name: 'web'
   properties: {
     netFrameworkVersion: 'v4.8'
-    use32BitWorkerProcess: false
+    use32BitWorkerProcess: (appServicePlanSku == 'F1' || appServicePlanSku == 'D1') // Free/Shared tiers require 32-bit
     managedPipelineMode: 'Classic'
     virtualApplications: [
       {
